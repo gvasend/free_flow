@@ -1,0 +1,28 @@
+[
+ {'exp': [instructions], 'cat':'instructions'},
+file_type([question,answer,'q&a'], q_and_a).
+file_type(['*justification*and*approval*'],j_and_a).
+file_type([jotfoc,otfo], jotfoc).
+file_type([terms,conditions], t_and_c).
+
+file_type(['*sources*sought*'], sources_sought).
+file_type([cdrl], cdrl).
+
+file_type([industry], industry_day).
+file_type([pws,sow,'*statement*of*work','*performance*work*statement'], pws).
+file_type([rfi,'*request*for*information*'], rfi).
+file_type([rfp], rfp).
+file_type([rfq],rfq).
+file_type([attendee,attendance,roster], attendee_list).
+file_type([cost, pricing], pricing).
+file_type([soo,requirements,'*statement*of*objectives*'], requirements).
+file_type([conference], conference).
+file_type(['*past*perf*'], past_performance).
+file_type(['*section?l*'], section_l).
+file_type(['*section?m*'], section_m).
+file_type(['*system*specification*'], system_spec).
+file_type([conops,'*concept*of*operations*'], conops).
+file_type(['*sole*source*'], sole_source).
+file_type([plan],plan).
+file_type([solicitation],rfp).
+]

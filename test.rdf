@@ -1,0 +1,10 @@
+ # create an email
+  <http://visallo.com/email1> <http://visallo.org#conceptType> "http://visallo.org/sample#emailAddress"
+  <http://visallo.com/email1> <http://visallo.org#title> "ryan@v5analytics.com"
+
+  # create another email
+  <http://visallo.com/email2> <http://visallo.org#conceptType> "http://visallo.org/sample#emailAddress"
+  <http://visallo.com/email2> <http://visallo.org#title> "susan@v5analytics.com"
+
+  # create an edge
+  <http://visallo.com/email1> <http://visallo.org/structured-file#elementHasSource> <http://visallo.com/email2>

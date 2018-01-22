@@ -1,0 +1,3 @@
+ {'exp': ['.*C.6.*'], 'cat':'requirement'}
+ {'exp':['.*section.*l'], 'cat':'requirement',type:'section_l'}
+ {'exp':['.*section.*m.*'], 'cat':'requirement',type:'section_m'}

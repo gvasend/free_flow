@@ -1,0 +1,40 @@
+<YEAR>,iname,<AGENCY>,<SOLNBR>,<OFFICE>,<LOCATION>,label,<NTYPE>,<DATE>
+17,0c4b1b44-8a77-11e7-89d0-1cc1de329608,Department of the Navy,N0025917N0092,Bureau of Medicine and Surgery,Naval Medical Center San Diego,<UNARCHIVE>,COMBINE  ,0719
+17,0c4b1b4a-8a77-11e7-89d0-1cc1de329608,Department of Justice,DJD-17-Q-0137,Drug Enforcement Administration,Office of Acquisition Management,<UNARCHIVE>,COMBINE  ,0801
+17,0c4b1b5f-8a77-11e7-89d0-1cc1de329608,General Services Administration,17-CENSUS-7TN2152,Public Buildings Service (PBS),R4 Leasing Division (47PE99),<UNARCHIVE>,SRCSGT,0713
+17,0c4b1b4d-8a77-11e7-89d0-1cc1de329608,Department of Transportation,MAPR615170735,Maritime Administration (MARAD),MAR-380,<UNARCHIVE>,SRCSGT,0706
+17,0c4b1b49-8a77-11e7-89d0-1cc1de329608,Defense Logistics Agency,SPE4A517R0489,DLA Acquisition Locations,DLA Aviation - BSM,<UNARCHIVE>,PRESOL,0130
+17,0c4b1b54-8a77-11e7-89d0-1cc1de329608,Department of the Navy,N0018917TG043,Naval Supply Systems Command,NAVSUP Fleet Logistics Center Norfolk Groton Office,<UNARCHIVE>,SNOTE,0104
+17,0c4b1b5d-8a77-11e7-89d0-1cc1de329608,General Services Administration,17-CENSUS-7FL2446,Public Buildings Service (PBS),R4 Leasing Division (47PE99),<UNARCHIVE>,SRCSGT,0713
+17,0c4b1b3f-8a77-11e7-89d0-1cc1de329608,Department of Agriculture,AG-64PP-S-17-0011,Agricultural Research Service,Midwest Area,<UNARCHIVE>,COMBINE  ,0622
+17,0c4b1b53-8a77-11e7-89d0-1cc1de329608,Department of the Navy,N0017817R4015,Naval Sea Systems Command,NSWC Dahlgren Division,<UNARCHIVE>,COMBINE  ,0531
+17,0c4b1b5b-8a77-11e7-89d0-1cc1de329608,General Services Administration,17-CENSUS-7NC2183,Public Buildings Service (PBS),R4 Leasing Division (47PE99),<UNARCHIVE>,SRCSGT,0713
+17,0c4b1b43-8a77-11e7-89d0-1cc1de329608,Department of the Army,W911SA-17-Q-0107,"Army Contracting Command, MICC",MICC - Fort McCoy (W911SA),<UNARCHIVE>,COMBINE  ,0607
+17,0c4b1b47-8a77-11e7-89d0-1cc1de329608,Department of Veterans Affairs,VA25017Q0949,Cincinnati VAMC,Department of Veterans Affairs Medical Center,<UNARCHIVE>,PRESOL,0803
+17,0c4b1b5e-8a77-11e7-89d0-1cc1de329608,General Services Administration,17-CENSUS_7FL2447,Public Buildings Service (PBS),R4 Leasing Division (47PE99),<UNARCHIVE>,SRCSGT,0718
+16,0c4b1b52-8a77-11e7-89d0-1cc1de329608,Department of the Navy,N4008016R0321,Naval Facilities Engineering Command,NAVFAC Washington,<UNARCHIVE>,SRCSGT,0707
+17,0c4b1b45-8a77-11e7-89d0-1cc1de329608,Department of the Navy,N3239817RDENGUE,Bureau of Medicine and Surgery,Naval Medical Logistics Command,<UNARCHIVE>,PRESOL,0802
+17,0c4b1b62-8a77-11e7-89d0-1cc1de329608,Department of the Army,W912QR-17-T-0062,U.S. Army Corps of Engineers,"USACE District, Louisville",<UNARCHIVE>,COMBINE  ,0714
+17,0c4b1b48-8a77-11e7-89d0-1cc1de329608,Defense Contract Management Agency,S5121A-17-R-0008,Defense Contract Management Agency,DCMA AQ,<UNARCHIVE>,PRESOL,0601
+17,0c4b1b5c-8a77-11e7-89d0-1cc1de329608,General Services Administration,17-CENSUS-7FL2445,Public Buildings Service (PBS),R4 Leasing Division (47PE99),<UNARCHIVE>,SRCSGT,0713
+17,0c4b1b51-8a77-11e7-89d0-1cc1de329608,Department of the Navy,N68335-17-R-0208,Naval Air Systems Command,Naval Air Warfare Center Aircraft Division Lakehurst,<UNARCHIVE>,PRESOL,0712
+17,0c4b1b4f-8a77-11e7-89d0-1cc1de329608,Department of Commerce,SB134117RQ0756,National Institute of Standards and Technology (NIST),Acquisition Management Division,<UNARCHIVE>,COMBINE  ,0706
+16,0c4b1b55-8a77-11e7-89d0-1cc1de329608,General Services Administration,5NC0178,Public Buildings Service (PBS),PBS Center for Broker Services (47PA05),<UNARCHIVE>,PRESOL,0712
+17,0c4b1b56-8a77-11e7-89d0-1cc1de329608,General Services Administration,17-CENSUS-7GA2237,Public Buildings Service (PBS),R4 Leasing Division (47PE99),<UNARCHIVE>,SRCSGT,0713
+17,0c4b1b46-8a77-11e7-89d0-1cc1de329608,Department of Health and Human Services,2017-N-66643,Centers for Disease Control and Prevention,Procurement and Grants Office (Atlanta),<UNARCHIVE>,PRESOL,0427
+17,0c4b1b42-8a77-11e7-89d0-1cc1de329608,Department of the Army,W58RGZ-16-R-0043,Army Contracting Command,ACC - RSA (W58RGZ) Aviation,<UNARCHIVE>,PRESOL,0508
+17,0c4b1b59-8a77-11e7-89d0-1cc1de329608,General Services Administration,17-CENSUS-7GA2236,Public Buildings Service (PBS),R4 Leasing Division (47PE99),<UNARCHIVE>,SRCSGT,0713
+17,0c4b1b5a-8a77-11e7-89d0-1cc1de329608,General Services Administration,17-CENSUS-7NC2182,Public Buildings Service (PBS),R4 Leasing Division (47PE99),<UNARCHIVE>,SRCSGT,0713
+17,0c4b1b4e-8a77-11e7-89d0-1cc1de329608,Department of Commerce,SB134117RQ0805,National Institute of Standards and Technology (NIST),Acquisition Management Division,<UNARCHIVE>,COMBINE  ,0713
+16,0c4b1b50-8a77-11e7-89d0-1cc1de329608,Department of Health and Human Services,HHSN26817HO00002R,National Institutes of Health,"National Heart, Lung and Blood Institute, Rockledge Dr. Bethesda, MD",<UNARCHIVE>,PRESOL,1201
+17,0c4b1b61-8a77-11e7-89d0-1cc1de329608,Department of the Army,W912DQ-17-B-1016SS,U.S. Army Corps of Engineers,"USACE District, Kansas City",<UNARCHIVE>,SRCSGT,0519
+17,0c4b1b57-8a77-11e7-89d0-1cc1de329608,General Services Administration,17-CENSUS_7GA2236,Public Buildings Service (PBS),R4 Leasing Division (47PE99),<UNARCHIVE>,SRCSGT,0718
+17,0c4b1b60-8a77-11e7-89d0-1cc1de329608,Department of the Army,W912DR-16-C-0004,U.S. Army Corps of Engineers,"USACE District, Baltimore",<UNARCHIVE>,SNOTE,0328
+17,0c4b1b63-8a77-11e7-89d0-1cc1de329608,Department of the Navy,M00146-17-Q-X074,United States Marine Corps,MCAS Cherry Point,<UNARCHIVE>,COMBINE  ,0718
+17,0c4b1b4b-8a77-11e7-89d0-1cc1de329608,Department of State,SFSIAQ17I1005,Foreign Service Institute,"U.S. Department of State, Foreign Service Institute",<UNARCHIVE>,SRCSGT,0623
+17,0c4b1b3e-8a77-11e7-89d0-1cc1de329608,Department of Agriculture,AG-64PP-S-17-0015,Agricultural Research Service,Midwest Area,<UNARCHIVE>,COMBINE  ,0717
+17,0c4b1b41-8a77-11e7-89d0-1cc1de329608,Department of the Army,W56KGU-17-R-0010,Army Contracting Command,ACC - APG (W56KGU) Division A,<UNARCHIVE>,PRESOL,0317
+17,0c4b1b64-8a77-11e7-89d0-1cc1de329608,Department of the Navy,M67001-17-Q-1267,United States Marine Corps,MCB Camp Lejeune - RCO,<UNARCHIVE>,COMBINE  ,0724
+17,0c4b1b4c-8a77-11e7-89d0-1cc1de329608,Department of Agriculture,AG-4283-S-17-0021,Forest Service,R-8 National Forests in Florida,<UNARCHIVE>,COMBINE  ,0630
+17,0c4b1b58-8a77-11e7-89d0-1cc1de329608,General Services Administration,17-CENSUS-7AL2123,Public Buildings Service (PBS),R4 Leasing Division (47PE99),<UNARCHIVE>,SRCSGT,0713
+16,0c4b1b40-8a77-11e7-89d0-1cc1de329608,Department of the Air Force,FA8118-16-R-0084,Air Force Materiel Command,PK/PZ Tinker AFB,<UNARCHIVE>,PRESOL,0825

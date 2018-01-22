@@ -1,0 +1,265 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf version="1.1" xmlns="http://www.gexf.net/1.1draft" xmlns:viz="http://www.gexf.net/1.1draft/viz" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance">
+  <graph defaultedgetype="undirected" mode="static">
+    <attributes class="node" mode="static">
+      <attribute id="0" title="name" type="string" />
+      <attribute id="1" title="text" type="string" />
+      <attribute id="2" title="seq" type="long" />
+    </attributes>
+    <nodes>
+      <node id="myproj" label="project">
+        <attvalues>
+          <attvalue for="0" value="myproj" />
+        </attvalues>
+      </node>
+      <node id="645e6899-7008-11e7-942f-1cc1de329608" label="645e6899-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="The standard marking required in MARKING for all for all packaging configurations can be applied separately or as part of the Bar Code Label." />
+          <attvalue for="2" value="31" />
+        </attvalues>
+      </node>
+      <node id="645e688f-7008-11e7-942f-1cc1de329608" label="645e688f-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="1-EA)\n\nHazardous Material Marking (If needed and as required in Code of Federal Regulations (CFR) section 4).\n\nFlash Point (If item is a liquid with a flash point of 93.3 degrees C (200 Degrees F) or less." />
+          <attvalue for="2" value="26" />
+        </attvalues>
+      </node>
+      <node id="645e6877-7008-11e7-942f-1cc1de329608" label="645e6877-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="Individual dimensions and total cubic feet\n\n5." />
+          <attvalue for="2" value="14" />
+        </attvalues>
+      </node>
+      <node id="all_projects" label="project">
+        <attvalues>
+          <attvalue for="0" value="all" />
+        </attvalues>
+      </node>
+      <node id="645e689d-7008-11e7-942f-1cc1de329608" label="645e689d-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="The stock number or numbers, and purchase order / contract number shall be bar coded with Human Readable Interpretation (HRI) immediately below the bar coding on unit and unitized packs.\n\nc." />
+          <attvalue for="2" value="33" />
+        </attvalues>
+      </node>
+      <node id="645e6887-7008-11e7-942f-1cc1de329608" label="645e6887-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="This unit pack shall meet the requirements of a shipping container.\n\nUNITIZATION  Unit packs can be unitized as specified in ASTM-D3951.\n\nMARKING  Marking shall be clear, legible, permanent, and in English.\n\nUNIT PACKAGES  Shall be marked as specified herein.\n\nNational Stock Number/ Activity Control Number.\n\nItem Name\n\nPart Number (as shipped)\n\nPurchase Order / Contract Number (example HSCG40-13-P-00000)\n\nDate of Manufacturer/Repair\n\nThe Words COAST GUARD SFLC MATERIAL CONDITION (A)\n\nQuantity &amp; Unit of Issue (i.e." />
+          <attvalue for="2" value="22" />
+        </attvalues>
+      </node>
+      <node id="645e689b-7008-11e7-942f-1cc1de329608" label="645e689b-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="If the latter option is used the label size shall be adjusted appropriately.\n\n\nb." />
+          <attvalue for="2" value="32" />
+        </attvalues>
+      </node>
+      <node id="645e6867-7008-11e7-942f-1cc1de329608" label="645e6867-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="The actual cost of transportation charges, not to exceed the above amount, shall be added to your invoice as a separate line item." />
+          <attvalue for="2" value="6" />
+        </attvalues>
+      </node>
+      <node id="645e687b-7008-11e7-942f-1cc1de329608" label="645e687b-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="Total dollar value\n\n7." />
+          <attvalue for="2" value="16" />
+        </attvalues>
+      </node>
+      <node id="645e685f-7008-11e7-942f-1cc1de329608" label="645e685f-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="\n\nAll packing lists shall cite the Purchase Order Number (when issued after award) with the package in such a manner as to provide identification.\nMaterial shall be packed for shipment in such a manner as to afford adequate protection to the item against corrosion, deterioration, and physical damage during shipment from the supply source to Engineering Logistic Center locations." />
+          <attvalue for="2" value="2" />
+        </attvalues>
+      </node>
+      <node id="645e6871-7008-11e7-942f-1cc1de329608" label="645e6871-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="Purchase Order Number\n\n2." />
+          <attvalue for="2" value="11" />
+        </attvalues>
+      </node>
+      <node id="645e6869-7008-11e7-942f-1cc1de329608" label="645e6869-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="Receipted freight bills are not required for transportation charges less than $100.00." />
+          <attvalue for="2" value="7" />
+        </attvalues>
+      </node>
+      <node id="645e687f-7008-11e7-942f-1cc1de329608" label="645e687f-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="Prepaid shipping costs will be indicated as a separate item on the invoice (if applicable)." />
+          <attvalue for="2" value="18" />
+        </attvalues>
+      </node>
+      <node id="645e6889-7008-11e7-942f-1cc1de329608" label="645e6889-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="1-EA)\n\nHazardous Material Marking (As required in Code of Federal Regulations (CFR) section 4).\n\nFlash Point (If item is a liquid with a flash point of 93.3 degrees C (200 Degrees F) or less." />
+          <attvalue for="2" value="23" />
+        </attvalues>
+      </node>
+      <node id="645e6875-7008-11e7-942f-1cc1de329608" label="645e6875-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="Individual and total weight\n\n4." />
+          <attvalue for="2" value="13" />
+        </attvalues>
+      </node>
+      <node id="645e686d-7008-11e7-942f-1cc1de329608" label="645e686d-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="\n\nIn the event that the transportation charges will exceed $250.00, you are required to contact the Coast Guard Traffic Section to obtain a Government Bill of Lading ten (10) days prior to shipping." />
+          <attvalue for="2" value="9" />
+        </attvalues>
+      </node>
+      <node id="645e687d-7008-11e7-942f-1cc1de329608" label="645e687d-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="Other pertinent data or special instructions\n\nMail to: Commanding Officer\n\n\n USCG Engineering Logistics Center\n\n\n 2401 Hawkins Point Road\n\n\nBaltimore, MD 21226-5000\n\n\nAttn: Traffic Section\n\n\nTelephone: 410-762-6328/6331\nFax: 410-762-6350\n\nPAYMENT INFORMATION (NON-CREDIT CARD ORDERS)\n\nAll invoices must contain the following information:  contract number, order number, item number, description of supplies or services, quantities, unit prices, extended totals, your DUNS number." />
+          <attvalue for="2" value="17" />
+        </attvalues>
+      </node>
+      <node id="645e6873-7008-11e7-942f-1cc1de329608" label="645e6873-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="Item identification/description (NMFC item number and classification if possible)\n\n3." />
+          <attvalue for="2" value="12" />
+        </attvalues>
+      </node>
+      <node id="this_doc" label="this_doc" />
+      <node id="645e6863-7008-11e7-942f-1cc1de329608" label="645e6863-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="**\nNote: FOB Destination pricing is preferred; however, if you decide to quote FOB Origin, please use the following instructions:\n\nFAR Clause 52.247-65 FOB Origin, Prepaid Freight  Small Package Shipments is included by reference." />
+          <attvalue for="2" value="4" />
+        </attvalues>
+      </node>
+      <node id="645e6885-7008-11e7-942f-1cc1de329608" label="645e6885-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="\n\nFor questions relating to payment of invoices please contact Chesapeake Yard Team Customer Service at 757-523-6940, Fax 757-523-6904, email to FIN-SMB-YARDTEAM@USCG.MIL or submit your invoice electronically at https://www.fincen.uscg.mil/secure/web_invoices_cgyard.htm \n USCG /ELC SP-PP&amp;M-00l DATED 05/95 REVISION D 10/00\n\nPRESERVATION, PACKAGING &amp; MARKING \n\nPRESERVATION  Each piece or assembly that makes up one each of any contract line item (CLIN) shall be preserved in accordance with ASTM-D-3951.\n\nPACKAGING  Each preserved contract line item shall be packed in its own carton or box as needed to meet the requirements of ASTM-D-3951.This package shall be considered a unit pack." />
+          <attvalue for="2" value="21" />
+        </attvalues>
+      </node>
+      <node id="645e6879-7008-11e7-942f-1cc1de329608" label="645e6879-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="Total number of pieces\n\n6." />
+          <attvalue for="2" value="15" />
+        </attvalues>
+      </node>
+      <node id="645e6891-7008-11e7-942f-1cc1de329608" label="645e6891-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value=").\n\nThe Words COAST GUARD SFLC MATERIAL MULTIPACK\n\nMultiple Stock Numbers\n\nALL National Stock Numbers/ Activity Control Numbers.\n\nPurchase Order / Contract Number  (example HSCG40-04-P-00000)\n\nThe Words COAST GUARD SFLC MATERIAL CONDITION (A).\n\nQuantity &amp; Unit of Issue (i.e." />
+          <attvalue for="2" value="27" />
+        </attvalues>
+      </node>
+      <node id="645e6883-7008-11e7-942f-1cc1de329608" label="645e6883-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="Box 4122, Chesapeake, VA  23327-4122." />
+          <attvalue for="2" value="20" />
+        </attvalues>
+      </node>
+      <node id="645e689f-7008-11e7-942f-1cc1de329608" label="645e689f-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="All HRI shall be placed below its associated bar code.\n\nThe label shall be intended for long term indoor applications where the labels will endure intermittent outdoor exposure." />
+          <attvalue for="2" value="34" />
+        </attvalues>
+      </node>
+      <node id="645e6893-7008-11e7-942f-1cc1de329608" label="645e6893-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="1-EA)\n\nHazardous Material Marking (If needed and as required in Code of Federal Regulations (CFR) section 4).\n\nFlash Point (If item is a liquid with a flash point of 93.3 degrees C (200 Degrees F) or less." />
+          <attvalue for="2" value="28" />
+        </attvalues>
+      </node>
+      <node id="645e686f-7008-11e7-942f-1cc1de329608" label="645e686f-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="Information to be provided:\n1." />
+          <attvalue for="2" value="10" />
+        </attvalues>
+      </node>
+      <node id="645e6897-7008-11e7-942f-1cc1de329608" label="645e6897-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="ALL Stock numbered items shall be bar coded.\n\na." />
+          <attvalue for="2" value="30" />
+        </attvalues>
+      </node>
+      <node id="645e685d-7008-11e7-942f-1cc1de329608" label="645e685d-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value=" b\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUSCG  ENGINEERING  LOGISTICS  CENTER\n\nEnclosure II\n\n\nPage 1\n\nPREPARATION FOR DELIVERY \n\nAll material shipped to the U.S. Coast Guard Engineering Logistics Center must be accompanied by an itemized packing list securely attached to the outside of the package." />
+          <attvalue for="2" value="1" />
+        </attvalues>
+      </node>
+      <node id="645e6865-7008-11e7-942f-1cc1de329608" label="645e6865-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="Shipments  FOB Origin: You are hereby authorized to prepay transportation charges under this order provided that the cost of such transportation does not exceed $250.00." />
+          <attvalue for="2" value="5" />
+        </attvalues>
+      </node>
+      <node id="645e688d-7008-11e7-942f-1cc1de329608" label="645e688d-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="For no reason shall more then one delivery order be unitized together.\n\nSingle Stock Number\n\nNational Stock Number/ Activity Control Number.\n\nPurchase Order / Contract Number (example HSCG40-13-P-00000)\n\nThe Words COAST GUARD SFLC MATERIAL CONDITION (A).\n\nQuantity &amp; Unit of Issue (i.e." />
+          <attvalue for="2" value="25" />
+        </attvalues>
+      </node>
+      <node id="645e6881-7008-11e7-942f-1cc1de329608" label="645e6881-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="\n\nInvoices must be mailed to USCG YARD, P.O." />
+          <attvalue for="2" value="19" />
+        </attvalues>
+      </node>
+      <node id="645e688b-7008-11e7-942f-1cc1de329608" label="645e688b-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value=")\n\nPropellant Chemical Name (Aerosol Containers only).\n\nUNITIZATION  If unitization is used as the final shipping container the unitized pack for one stock number shall be marked as specified below, see Single Stock Number If there are multiple stock numbers involved see Multiple Stock Numbers herein." />
+          <attvalue for="2" value="24" />
+        </attvalues>
+      </node>
+      <node id="645e6895-7008-11e7-942f-1cc1de329608" label="645e6895-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value=").\n\nThe Words COAST GUARD SFLC MATERIAL MULTIPACK\n\nUSCG/ELC SP-PP&amp;M-00l, DATED 05/95, REVISION D 10/00\n\nBAR CODING  All bar coding required herein shall be Code 39, also called Code 3 of 9 in accordance with ANSI/AIM BC1." />
+          <attvalue for="2" value="29" />
+        </attvalues>
+      </node>
+      <node id="645e686b-7008-11e7-942f-1cc1de329608" label="645e686b-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="Freight charges for more than $100.00 shall be supported by paid freight, express, or parcel post receipts." />
+          <attvalue for="2" value="8" />
+        </attvalues>
+      </node>
+      <node id="645e6861-7008-11e7-942f-1cc1de329608" label="645e6861-7008-11e7-942f-1cc1de329608">
+        <attvalues>
+          <attvalue for="1" value="Package shall also provide adequate protection for warehouse storage and multiple shipments.\n\nAll packages shall have the Purchase Order Number, Stock Number, Vendor name, and Part Number clearly marked on the exterior of the package.\n**All deliveries are to be made Monday through Friday between the hours of 7:00 A.M. and 1:00 P.M., EST." />
+          <attvalue for="2" value="3" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge id="0" source="myproj" target="this_doc" />
+      <edge id="1" source="645e6899-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="2" source="645e688f-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="3" source="645e6877-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="4" source="all_projects" target="this_doc" />
+      <edge id="5" source="645e689d-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="6" source="645e6887-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="7" source="645e689b-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="8" source="645e6867-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="9" source="645e687b-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="10" source="645e685f-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="11" source="645e6871-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="12" source="645e6869-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="13" source="645e687f-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="14" source="645e6889-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="15" source="645e6875-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="16" source="645e686d-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="17" source="645e687d-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="18" source="645e6873-7008-11e7-942f-1cc1de329608" target="this_doc" />
+      <edge id="19" source="this_doc" target="645e6879-7008-11e7-942f-1cc1de329608" />
+      <edge id="20" source="this_doc" target="645e6861-7008-11e7-942f-1cc1de329608" />
+      <edge id="21" source="this_doc" target="645e6863-7008-11e7-942f-1cc1de329608" />
+      <edge id="22" source="this_doc" target="645e6885-7008-11e7-942f-1cc1de329608" />
+      <edge id="23" source="this_doc" target="645e6881-7008-11e7-942f-1cc1de329608" />
+      <edge id="24" source="this_doc" target="645e6891-7008-11e7-942f-1cc1de329608" />
+      <edge id="25" source="this_doc" target="645e6883-7008-11e7-942f-1cc1de329608" />
+      <edge id="26" source="this_doc" target="645e689f-7008-11e7-942f-1cc1de329608" />
+      <edge id="27" source="this_doc" target="645e6893-7008-11e7-942f-1cc1de329608" />
+      <edge id="28" source="this_doc" target="645e686f-7008-11e7-942f-1cc1de329608" />
+      <edge id="29" source="this_doc" target="645e6897-7008-11e7-942f-1cc1de329608" />
+      <edge id="30" source="this_doc" target="645e685d-7008-11e7-942f-1cc1de329608" />
+      <edge id="31" source="this_doc" target="645e6865-7008-11e7-942f-1cc1de329608" />
+      <edge id="32" source="this_doc" target="645e688d-7008-11e7-942f-1cc1de329608" />
+      <edge id="33" source="this_doc" target="645e688b-7008-11e7-942f-1cc1de329608" />
+      <edge id="34" source="this_doc" target="645e6895-7008-11e7-942f-1cc1de329608" />
+      <edge id="35" source="this_doc" target="645e686b-7008-11e7-942f-1cc1de329608" />
+    </edges>
+  </graph>
+</gexf>

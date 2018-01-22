@@ -1,0 +1,24 @@
+ {'exp': ['instructions'], 'cat':'instructions'}
+{'exp': ['question','answer','q&a'], 'cat': 'q_and_a'}
+{'exp': ['.*justification.*and.*approval.*'], 'cat':'j_and_a'}
+{'exp': ['jotfoc','otfo'], 'cat': 'jotfoc'}
+{'exp': ['terms','conditions'], 'cat': 't_and_c'}
+{'exp': ['.*sources.*sought.*'], 'cat': 'sources_sought'}
+{'exp': ['cdrl'], 'cat': 'cdrl'}
+{'exp': ['industry'], 'cat': 'industry_day'}
+{'exp': ['pws','sow','.*statement.*of.*work.*','.*performance.*work.*statement.*'], 'cat': 'pws'}
+{'exp': ['rfi','.*request.*for.*information.*'], 'cat': 'rfi'}
+{'exp': ['rfp'], 'cat': 'rfp'}
+{'exp': ['rfq'], 'cat':'rfq'}
+{'exp': ['attendee','attendance','roster'], 'cat': 'attendee_list'}
+{'exp': ['cost','pricing'], 'cat': 'pricing'}
+{'exp': ['soo','requirements','.*statement.*of.*objectives.*'], 'cat': 'requirements'}
+{'exp': ['conference'], 'cat': 'conference'}
+{'exp': ['.*past.*perf.*'], 'cat': 'past_performance'}
+{'exp': ['.*section.?l.*'], 'cat': 'section_l'}
+{'exp': ['.*section.?m.*'], 'cat': 'section_m'}
+{'exp': ['.*system.*specification.*'], 'cat': 'system_spec'}
+{'exp': ['conops','.*concept.*of.*operations.*'], 'cat': 'conops'}
+{'exp': ['.*sole.*source.*'], 'cat': 'sole_source'}
+{'exp': ['plan'], 'cat':'plan'}
+{'exp': ['solicitation'], 'cat':'rfp'}
