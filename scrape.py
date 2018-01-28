@@ -108,10 +108,13 @@ def write_dict(data):
 import json
 def write_dict1(fh=sys.stdout,tee=True):
     global dict_str
+    for key, val in enumerate(dict_str):
+        if 'file' in key:
+            os.environ[key.upper()] = value 
 # Write dict to stdout
 #    if not dict_str == None and not arguments.t == None and not arguments.s:
     if tee:
-        dict_str = json.dumps(in_dict)
+        dict_str = json.dumps(out_data)
     if not dict_str == None and not arguments.s:
         fh.write("<upstream_data>\n")
         fh.write(dict_str)
@@ -205,6 +208,9 @@ def parse_args(parser):
     for key, val in dct.items():
 #        print("key ",key,"value ",val)
         new_val = val
+        if type(val) == str and '+' in val and stdin_mode() == 'terminal':
+            ptr = val.split("+")[1]
+            new_val = os.environ[ptr.upper()]
         if type(val) == str and '*' in val:
             ptr = val.split("*")[1]
 #            print("indirect reference: ptr ")
@@ -329,6 +335,7 @@ def save_model(model, fname):
     class_name = re.search('class \'(.*)\'>', str(type(model))).group(1)
     if fname == None:
         fname = class_name+"_"+str(uuid.uuid1())+'.pkl'
+    logger.info("saving model as %s"%fname)
     joblib.dump(model, fname) 
     write_dict({'model_file':fname})
 
@@ -361,7 +368,7 @@ def model_options(parser):
     parser.add_argument('--model_file',default='*model_output_file',help='load existing model from file.')
     parser.add_argument('--model_output_file',help='load existing model from file.')
 #    parser.add_argument('--model_output_file',default='eval:"sk_model_"+str(uuid.uuid1())+".pkl"',help='load existing model from file.')
-    parser.add_argument('--action',choices=['fit','fit_predict','fit_transform','predict','transform','score'])
+    parser.add_argument('--action',choices=['fit','fit_predict','fit_transform','predict','transform','score','print'])
 
 # all options
 def all_options(parser):

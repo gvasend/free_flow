@@ -5,7 +5,8 @@ from sklearn.cluster import MeanShift
 import csv
 import sys
 import uuid
-
+import logging
+from pprint import pprint
 from sklearn import manifold, datasets
 from sklearn import svm
 import matplotlib.pyplot as plt
@@ -44,28 +45,35 @@ from scrape import load_file
 args = sc.parse_args(parser)
 print(args)
 from numpy import genfromtxt
-feature_file = args.feature_file
+
 # print ("feature_file:",feature_file)
 
+if args.feature_file == None:
+    setattr(args, 'feature_file', " ")
+
+feature_file = args.feature_file
+
 y = None
+X = []
 if '.csv' in feature_file:
     X = genfromtxt(feature_file, delimiter=',')
     y = [1 for y1 in range(len(X))]
-elif '.libsvm' in feature_file:
+elif '.libsvm' in feature_file or '.svm' in feature_file:
     X, y = datasets.load_svmlight_files([feature_file])
     X = X.toarray()
 else:
     print("feature file not found")
 #    y = y.toarray()
 
-pca = PCA()
-pca.fit(X)
+if len(X) > 0:
+    pca = PCA()
+    pca.fit(X)
 # print("matrix shape ",len(X),len(X[0]))
-sc.write_dict({'rows':len(X),'features':len(X[0])})
+    sc.write_dict({'rows':len(X),'features':len(X[0])})
 
 svc = sc.load_model(args.model_file)
 
-
+logging.info("action %s"%args.action)
 labels_created = False
 data_changed = False
 model_change = False
@@ -88,6 +96,10 @@ elif args.action == 'fit_predict':
     labels_created = True
 elif args.action == 'score':
     svc.score(X,y)
+elif args.action == 'print':
+    dct = svc.__dict__
+    pprint(dct)
+dct = pprint(svc.__dict__)
 
 write_dict(svc.__dict__)
 
