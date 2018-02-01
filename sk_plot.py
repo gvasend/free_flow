@@ -7,8 +7,11 @@ from sklearn.dummy import DummyClassifier
 import sys
 import uuid
 
+
 from sklearn import manifold, datasets
 from sklearn import svm
+import matplotlib
+#matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -46,7 +49,7 @@ parser.add_argument('--projection',choices=['3d','polar'])
 
 parser.add_argument('--feature_file2')
 
-from scrape import write_dict
+from scrape import write_dict, write_dict_file
 from scrape import load_file
 
 args = sc.parse_args(parser)
@@ -71,6 +74,9 @@ elif '.libsvm' in feature_file:
     X = X.toarray()
     
 feature_file2 = args.feature_file2
+if feature_file2 == None:
+    feature_file2 = feature_file
+	
 print ("feature_file2:",feature_file2)
 
 if not feature_file2 == None:
@@ -217,7 +223,7 @@ if args.plot == 'save':
 
     fname = args.plot_file
     plt.savefig(fname)
-    write_dict({'svc_plot_file':fname})
+    write_dict_file('svc_plot_file',fname)
 elif args.plot == 'show':
     plt.show()
 

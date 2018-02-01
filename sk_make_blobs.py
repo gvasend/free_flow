@@ -16,7 +16,7 @@ parser = argparse.ArgumentParser(description='Generate isotropic Gaussian blobs 
 
 parser.add_argument('--centers',default='3',help=' or array of shape [n_centers, n_features], optional (default=3) The number of centers to generate, or the fixed center locations.')
 
-parser.add_argument('--cluster_std',help=' or sequence of floats, optional (default=1.0) The standard deviation of the clusters.')
+parser.add_argument('--cluster_std',default='1.0',help=' or sequence of floats, optional (default=1.0) The standard deviation of the clusters.')
 
 parser.add_argument('--center_box',default='(-10.0,10.0)',help=' : pair of floats (min, max), optional (default=(-10.0, 10.0)) The bounding box for each cluster center when centers are generated at random.')
 

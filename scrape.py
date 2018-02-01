@@ -8,6 +8,73 @@ import logging
 import os, stat, sys
 
 logger = logging.getLogger('freeflow')
+svci = sys.argv[0]+'_'+str(uuid.uuid1())+'.svci'
+tee_output = False
+
+
+class Metafile(object):
+    def __init__(self,filename,data):
+        if filename == None:
+            return None
+        self.filename = filename
+        if '.meta' in filename:
+            logging.info("load metafile directly by name: %s"%filename)
+            self.data = load_json(filename)
+            self.filename = self.data.filename
+        elif file_exists(self.meta_filename()):
+            logging.info("load existing metafile")
+            dct = load_json(self.meta_filename())
+            self.data = dct
+        else:
+            self.data = {"svci":svci,"filename":self.filename,"creation":time.time(),"retain":0}
+            self.data.update(data)
+            save_json(self.meta_filename(),self.data)
+            print("meta:",self.meta_filename())
+
+    def get_filename(self):
+        return self.filename
+		
+    def meta_filename(self):
+        return "."+self.filename+".meta"
+#        return "mf_"+self.filename
+
+    def expired(self):
+        try:
+            if self.data.retain == 0:
+                return False
+        except:
+            return False
+        create_date = self.data.creation
+        now = time.time()
+        if self.creation+(self.retain*60.0*60.0*24.0) > time.time():
+            return True
+        else:
+            return False
+		
+    def create_dict_mf(dct):
+        for key, val in dct.items():
+            if 'file' in key and not val == None and file_exists(val):
+                mf = Metafile(val,{})
+            elif val == None:
+                logging.info("file %s is None"%key)
+
+    def scan_metafile(fname):
+        mf = Metafile(fname,{})
+        if mf.expired():
+            mf.delete()
+			
+    def scan_mf():
+        for dirpath, dnames, fnames in os.walk("./"):
+            for f in fnames:
+                if f.endswith(".meta"):
+                    Metafile.scan_metafile(os.path.join(dirpath, f))
+                
+
+def file_exists(fname):
+    try:
+        return os.path.isfile(fname)	
+    except:
+        raise Exception("error on testing %s for existance"%fname)
 
 class ExitHooks(object):
     def __init__(self):
@@ -29,9 +96,32 @@ class ExitHooks(object):
 
 hooks = ExitHooks()
 
+env_file = "env.json"
 
+def load_json(fname):
+  try:
+    with open(fname, 'r') as inpf:
+        str = inpf.read()
+        return json.loads(str)
+  except:
+    return {}
+    
+def save_json(fname, dct):
+    with open(fname, 'w') as outf:
+        outf.write(json.dumps(dct))
 
+def set_env(key,val):
+    dct = load_json(env_file)
+    os.environ[key.upper()] = str(val)
+    dct[key] = str(val)
+    save_json(env_file, dct)
 
+def get_env(key):
+    dct = load_json(env_file)
+    if key in dct:
+        return dct[key]
+    else:
+        return None
 
 def stdin_mode():
     mode = os.fstat(0).st_mode
@@ -65,14 +155,17 @@ def get_output_data_json(results):
     app_data = ",".join(app_lst)
     if '{' in app_data:
         app_dict = json.loads(app_data)
+        logger.info("app_dict:%s"%app_dict)
     else:
         logger.warning("app data not detected")
         app_dict = {}
-    upstream_data = re.findall('<upstream_data>(.+?)</upstream_data>', results, re.DOTALL)
+    upstream_lst = re.findall('<upstream_data>(.+?)</upstream_data>', results, re.DOTALL)
+    upstream_data = ",".join(upstream_lst)
     if '{' in upstream_data:
         upstream_dict = json.loads(upstream_data)
+        logger.info("upstream_dict:%s"%upstream_dict)
     else:
-        logger.info("upstream data not detected")
+        logger.info("upstream data not detected: %s"%upstream_data)
         upstream_dict = {}
 
 #    print("up ",upstream_dict," app ",app_dict)
@@ -97,9 +190,15 @@ def json_scrape(results):
     logger.info("scraped data: %s"%dict_str)
     return ast.literal_eval(dict_str)
 
+
+def write_dict_file(key,filename):
+#    write_dict({key:Metafile(filename,{"retain":60}).filename})
+    write_dict({key:filename})
+	
 def write_dict(data):
 # Store data to be written on exit
     global out_data
+    Metafile.create_dict_mf(data)
     for key in data:
         if isinstance(data[key], (list, str, int, float, bool, type(None))):
             out_data[key] = data[key]
@@ -107,14 +206,16 @@ def write_dict(data):
 
 import json
 def write_dict1(fh=sys.stdout,tee=True):
-    global dict_str
-    for key, val in enumerate(dict_str):
-        if 'file' in key:
-            os.environ[key.upper()] = value 
+    global dict_str, out_data, in_dict
+    for key, val in out_data.items():
+        if not val == None:
+#            logger.info("set env %s=%s"%(key,val))
+            set_env(key,val)
 # Write dict to stdout
 #    if not dict_str == None and not arguments.t == None and not arguments.s:
     if tee:
-        dict_str = json.dumps(out_data)
+        logger.info("tee is true, copy input data to output stream")
+        dict_str = json.dumps(in_dict)
     if not dict_str == None and not arguments.s:
         fh.write("<upstream_data>\n")
         fh.write(dict_str)
@@ -125,6 +226,7 @@ def write_dict1(fh=sys.stdout,tee=True):
         fh.write("</app_data>\n")
 
 def freeflow_terminate(fh=sys.stdout,tee=False):
+    tee = tee_output
     delta_time=time.time()-start_time
     now = "%s"%(datetime.datetime.now())
     write_dict({'termination_time':now,'run_time':delta_time})
@@ -137,6 +239,8 @@ def freeflow_terminate(fh=sys.stdout,tee=False):
     for arg in vars(arguments):
         write_dict({'--'+arg:getattr(arguments,arg)})
     write_dict1(fh,tee)
+    with open(svci,'w') as outf:        # create service instance file
+        write_dict1(outf,tee)
     
 def safe_eval(expr):
     if expr == None:
@@ -158,6 +262,7 @@ def encode_data(out_data,fh=sys.stdout):
                fh.write('{"%s":"%s"}'%(key,out_data[key]))
 
 def decode_data(st):
+    logger.info("decode:%s"%st)
     if smethod == 'simple':
         return get_output_data(st)
     elif smethod == 'json':
@@ -183,8 +288,10 @@ def eval_argument(val):
 import argparse
 def parse_args(parser):
 # wrapper around parse_args
-    global in_dict, arguments, hooks, logger
+    global in_dict, arguments, hooks, logger, tee_output
     parser.formatter_class = argparse.ArgumentDefaultsHelpFormatter
+    logging.basicConfig(level='DEBUG')
+    logger = logging.getLogger('root')
     args =  parser.parse_args(scrape_inputs_(parser))
     if not args.s:
         hooks.hook()
@@ -208,9 +315,10 @@ def parse_args(parser):
     for key, val in dct.items():
 #        print("key ",key,"value ",val)
         new_val = val
-        if type(val) == str and '+' in val and stdin_mode() == 'terminal':
-            ptr = val.split("+")[1]
-            new_val = os.environ[ptr.upper()]
+        if type(val) == str and '?' in val and stdin_mode() == 'terminal':
+            ptr = val.split("?")[1]
+            new_val = get_env(ptr)
+            logger.info("lookup key %s was %s now %s"%(ptr,val,new_val))
         if type(val) == str and '*' in val:
             ptr = val.split("*")[1]
 #            print("indirect reference: ptr ")
@@ -223,6 +331,7 @@ def parse_args(parser):
                     new_val = in_dict[ink]
         setattr(args, key, eval_argument(new_val))
     logger.info("final arguments %s"%args)
+    tee_output = args.t
     arguments = args
     return args
 
@@ -241,7 +350,7 @@ def command_file(lst):
     fname = None
     for opt_ind in range(len(lst)):
         opt = lst[opt_ind]
-        if '--argf' in opt:
+        if isinstance(opt, str) and '--argf' in opt:
             fname = lst[opt_ind+1]             # this argument will disappear from the argument list
             if '*' in fname:
                 fname = lookup_key(fname[1:],lst)
@@ -275,23 +384,35 @@ def scrape_inputs_(parser):
     logger.info("stdin mode=%s"%mode)
     write_dict({'program':sys.argv[0],'execution_time':now})
     if not mode == 'terminal':    # if stdin data is available, scrape it
+        st = sys.stdin.read()
+    else:
+        try:
+          with open(env_file, 'r') as inpf:
+              st = "<app_data>"+inpf.read()+"</app_data>"
+              logger.debug("read environment data %s"%st)
+        except:
+          st = "{}"
+          logger.warn("unable to lod environment data")
+    if not st == None:
         needed_args = []
         for arg in parser._actions:
             needed_args.extend(arg.option_strings)
 #        print("needed args",needed_args)
-        st = sys.stdin.read()
+
 #        print("scraping stdin",st)
         in_dict = decode_data(st)
         arg_list = sys.argv[1:]
         for key in in_dict:
-            if '--'+key in needed_args:
+            if '--'+key in needed_args and not '--'+key in sys.argv:
                 arg_list.extend(['--'+key,in_dict[key]])
 #        print("collected data:",arg_list)
         return_list = arg_list
     else:                                           # if stdin data is not available, the command line has to have all the needed data
         logger.info("stdin not available, use only command lines")
         return_list = sys.argv[1:]
-    return command_file(return_list)                # insert command file arguments if found
+#    return command_file(return_list)                # insert command file arguments if found  disable for now. may not need
+    print("return_list:%s"%return_list)
+    return return_list
         
 def load_file(feature_file):
     if '.csv' in feature_file:
