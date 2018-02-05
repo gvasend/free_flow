@@ -7,9 +7,11 @@ import uuid
 import logging
 import os, stat, sys
 
+#logging.basicConfig(level="DEBUG")
 logger = logging.getLogger('freeflow')
 svci = sys.argv[0]+'_'+str(uuid.uuid1())+'.svci'
 tee_output = False
+retain = 0
 
 
 class Metafile(object):
@@ -18,18 +20,24 @@ class Metafile(object):
             return None
         self.filename = filename
         if '.meta' in filename:
-            logging.info("load metafile directly by name: %s"%filename)
+            logging.warn("load metafile directly by name: %s"%filename)
             self.data = load_json(filename)
-            self.filename = self.data.filename
+            self.filename = self.data["filename"]
+            print(self.data)
+            self.filename = self.data["filename"]
         elif file_exists(self.meta_filename()):
             logging.info("load existing metafile")
             dct = load_json(self.meta_filename())
             self.data = dct
         else:
-            self.data = {"svci":svci,"filename":self.filename,"creation":time.time(),"retain":0}
+            self.data = {"svci":svci,"filename":self.filename,"creation":time.time(),"retain":retain}
             self.data.update(data)
             save_json(self.meta_filename(),self.data)
             print("meta:",self.meta_filename())
+            
+    def delete(self):
+        os.remove(self.filename)
+        os.remove(self.meta_filename())
 
     def get_filename(self):
         return self.filename
@@ -40,12 +48,16 @@ class Metafile(object):
 
     def expired(self):
         try:
-            if self.data.retain == 0:
+            if self.data["retain"] == 0:
                 return False
         except:
             return False
-        create_date = self.data.creation
+        if not "creation" in self.data:
+            return False
+        create_date = self.data["creation"]
         now = time.time()
+        remain = time.time()-(self.creation+(self.retain*60.0*60.0*24.0))
+        print("%s time remaining"%remain)
         if self.creation+(self.retain*60.0*60.0*24.0) > time.time():
             return True
         else:
@@ -55,20 +67,20 @@ class Metafile(object):
         for key, val in dct.items():
             if 'file' in key and not val == None and file_exists(val):
                 mf = Metafile(val,{})
-            elif val == None:
+            elif 'file' in key and val == None:
                 logging.info("file %s is None"%key)
 
-    def scan_metafile(fname):
+    def scan_metafile(fname, opts):
         mf = Metafile(fname,{})
-        if mf.expired():
+        if mf.expired() or '--delete_all' in opts:
             mf.delete()
 			
-    def scan_mf():
+    def scan_mf(opts=""):
         for dirpath, dnames, fnames in os.walk("./"):
             for f in fnames:
                 if f.endswith(".meta"):
-                    Metafile.scan_metafile(os.path.join(dirpath, f))
-                
+                    Metafile.scan_metafile(os.path.join(dirpath, f), opts)
+                                    
 
 def file_exists(fname):
     try:
@@ -143,11 +155,13 @@ import re, ast
 start_time = time.time()
 tee = False
 arguments = None
-
+g_upstream_dict = {}
+g_input_dict = {}
 dict_str = None
 import json
 
 def get_output_data_json(results):
+    global g_upstream_dict, g_input_dict
 # scrape output data between markers. limits where output data is scraped but follows full json format.
     results = str(results)
     logger.info(results)
@@ -155,6 +169,7 @@ def get_output_data_json(results):
     app_data = ",".join(app_lst)
     if '{' in app_data:
         app_dict = json.loads(app_data)
+        g_input_dict = app_dict
         logger.info("app_dict:%s"%app_dict)
     else:
         logger.warning("app data not detected")
@@ -163,6 +178,7 @@ def get_output_data_json(results):
     upstream_data = ",".join(upstream_lst)
     if '{' in upstream_data:
         upstream_dict = json.loads(upstream_data)
+        g_upstream_dict = upstream_dict
         logger.info("upstream_dict:%s"%upstream_dict)
     else:
         logger.info("upstream data not detected: %s"%upstream_data)
@@ -172,6 +188,8 @@ def get_output_data_json(results):
     upstream_dict.update(dict(app_dict)) # make sure app_data overwrites where duplicate
     logger.info("output data = %s"%upstream_data)
     return upstream_dict
+# TODO upstream dict now kept separate. when this is working this function contains dead code to merge upstream data which should be removed
+#    return app_dict
 
 def get_output_data(results):
 # scrape output data using regular expression does not handle nested structures
@@ -202,7 +220,12 @@ def write_dict(data):
     for key in data:
         if isinstance(data[key], (list, str, int, float, bool, type(None))):
             out_data[key] = data[key]
-    
+
+def extend_name(dct,ext):
+    new_dct = {}
+    for key, val in dct.items():
+        new_dct[key+ext] = val
+    return new_dct		
 
 import json
 def write_dict1(fh=sys.stdout,tee=True):
@@ -215,7 +238,7 @@ def write_dict1(fh=sys.stdout,tee=True):
 #    if not dict_str == None and not arguments.t == None and not arguments.s:
     if tee:
         logger.info("tee is true, copy input data to output stream")
-        dict_str = json.dumps(in_dict)
+        dict_str = json.dumps(extend_name(in_dict,'-1'))				# extend name to ovoid name conflicts
     if not dict_str == None and not arguments.s:
         fh.write("<upstream_data>\n")
         fh.write(dict_str)
@@ -288,14 +311,14 @@ def eval_argument(val):
 import argparse
 def parse_args(parser):
 # wrapper around parse_args
-    global in_dict, arguments, hooks, logger, tee_output
+    global in_dict, arguments, hooks, logger, tee_output, g_upstream_dict, g_input_dict
     parser.formatter_class = argparse.ArgumentDefaultsHelpFormatter
-    logging.basicConfig(level='DEBUG')
     logger = logging.getLogger('root')
     args =  parser.parse_args(scrape_inputs_(parser))
     if not args.s:
         hooks.hook()
         atexit.register(freeflow_terminate)
+    retain = args.k
 
     try:        
         logging.basicConfig(level=args.ll)
@@ -308,7 +331,8 @@ def parse_args(parser):
         logger = logging.getLogger('freeflow')
         print('unable to set logger level')
 
-#    print("scrapped data",in_dict)
+    logger.info("scrapped data %s"%in_dict)
+    logger.info("upstream data %s"%g_upstream_dict)
     dct = args.__dict__.copy()
 #    print(in_dict)
 #  resolve any indirect references
@@ -321,14 +345,17 @@ def parse_args(parser):
             logger.info("lookup key %s was %s now %s"%(ptr,val,new_val))
         if type(val) == str and '*' in val:
             ptr = val.split("*")[1]
-#            print("indirect reference: ptr ")
-            logger.info("search for %s"%ptr)
+            logger.info("indirect search for %s"%ptr)
             for ink in in_dict:
-#                print('checking ',ink)
-                if ptr in ink:    # if the in_dict value is a string and the ptr is in the str we have a match
-#            if ptr in in_dict:
-#                print("     points to:",in_dict[ptr])
+                if ptr in ink and not in_dict[ink] == None:    # if the in_dict value is a string and the ptr is in the str we have a match
                     new_val = in_dict[ink]
+                    logger.info("found in arguments %s:%s"%(ptr,new_val))
+                    break
+            for ink in g_upstream_dict:
+                if ptr == ink and not g_upstream_dict[ink] == None:    # if the in_dict value is a string and the ptr is in the str we have a match
+                    new_val = g_upstream_dict[ink]
+                    logger.info("found in upstream %s:%s"%(ptr,new_val))
+                    break
         setattr(args, key, eval_argument(new_val))
     logger.info("final arguments %s"%args)
     tee_output = args.t
@@ -497,8 +524,8 @@ def all_options(parser):
     parser.add_argument('-s',help='Supress dict output.',action="store_true")
     parser.add_argument('-b',help='Disable read arguments from stdin.',action="store_true")
     parser.add_argument('--argf',help='Read command line arguments from a file.',default='*command_file')
-    parser.add_argument('-ll',default='WARNING',help='set debugging level')
-
+    parser.add_argument('-ll',default='WARN',help='set debugging level')
+    parser.add_argument('-k',type=int,default=1,help='How long to keep auto generated files (days). Default is 1 day')
 
 
 # output options

@@ -33,6 +33,12 @@ br.set_addr('')
 
 
 
+def create_experiment(topicObj=pub.AUTO_TOPIC, data=None):
+    pay = data['create_job']
+    cypher = pay['cypher']
+    print("create_experiment::%s"%cypher)
+    sys.stdout.flush()
+
 def create_job(topicObj=pub.AUTO_TOPIC, data=None):
     pay = data['create_job']
     cypher = pay['cypher']
@@ -53,6 +59,7 @@ def rcv_data(topicObj=pub.AUTO_TOPIC, data=None):
     print("forward_data: %s"%forward)
     sys.stdout.flush()
 
+pub.subscribe(create_experiment, 'ff.create_experiment')
 pub.subscribe(create_job, 'ff.create_job')	
 pub.subscribe(run_job, 'ff.run_job')	
 pub.subscribe(rcv_data, 'ff.rcv_data')	

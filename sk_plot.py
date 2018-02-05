@@ -10,16 +10,13 @@ import uuid
 
 from sklearn import manifold, datasets
 from sklearn import svm
-import matplotlib
-#matplotlib.use('Agg')
-import matplotlib.pyplot as plt
+
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from matplotlib.colors import ListedColormap
-from mpl_toolkits.mplot3d import Axes3D
 
-Axes3D
+
+
 
 import scrape as sc
 
@@ -54,6 +51,14 @@ from scrape import load_file
 
 args = sc.parse_args(parser)
 
+import matplotlib
+if args.plot == 'save':
+    matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+from mpl_toolkits.mplot3d import Axes3D
+Axes3D
+
 plots = args.type.split(",")
 
 
@@ -74,8 +79,8 @@ elif '.libsvm' in feature_file:
     X = X.toarray()
     
 feature_file2 = args.feature_file2
-if feature_file2 == None:
-    feature_file2 = feature_file
+#if feature_file2 == None:
+#    feature_file2 = feature_file
 	
 print ("feature_file2:",feature_file2)
 
@@ -112,7 +117,7 @@ if not args.plot == 'no' and 'basic' in plots:
     if feature_file2 == None:
         yd = y
     else:
-        y_not_noise = [abs(item[0]-item[1]) for item in zip(y,y2) if item[0] > -1 and item[0] > -1]
+        y_not_noise = [abs(item[0]-item[1]) for item in zip(y,y2) if item[0] > -1 and item[1] > -1]
         yd_not_noise = [item for item in y_not_noise if item == 0]
         score1 = float(len(yd_not_noise))/float(len(y_not_noise))
         yd = [abs(item[0]-item[1]) for item in zip(y,y2)]
