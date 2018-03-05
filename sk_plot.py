@@ -112,7 +112,7 @@ if len(X[0]) > 3:
 
 if not args.plot == 'no' and 'basic' in plots:
     sc.write_dict({'plot_type':'basic'})
-    plt.title(args.plot_title)
+    plt.title("task "+args.id+" "+args.plot_title)
     ax = figure.add_subplot(111)
     if feature_file2 == None:
         yd = y

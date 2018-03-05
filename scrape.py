@@ -12,7 +12,21 @@ logger = logging.getLogger('freeflow')
 svci = sys.argv[0]+'_'+str(uuid.uuid1())+'.svci'
 tee_output = False
 retain = 0
+input_str = ""
 
+def extract_val(st):
+    st1 = st.split(":")[1].split('"')[1]
+    print("extract_val:",st,st1)
+    return st1
+
+def collectJson(key):
+    st = input_str
+    strs = []
+    val_list = st.split(key)
+    for idx in range(1,len(val_list)):
+        strs.append(extract_val(val_list[idx]))
+    print("strings extracted:",strs)
+    return strs
 
 class Metafile(object):
     def __init__(self,filename,data):
@@ -120,7 +134,7 @@ def load_json(fname):
     
 def save_json(fname, dct):
     with open(fname, 'w') as outf:
-        outf.write(json.dumps(dct))
+        outf.write(json.dumps(dct,sort_keys=True))
 
 def set_env(key,val):
     dct = load_json(env_file)
@@ -161,9 +175,10 @@ dict_str = None
 import json
 
 def get_output_data_json(results):
-    global g_upstream_dict, g_input_dict
+    global g_upstream_dict, g_input_dict, input_str
 # scrape output data between markers. limits where output data is scraped but follows full json format.
     results = str(results)
+    input_str = results # save for later use
     logger.info(results)
     app_lst = re.findall('<app_data>(.+?)</app_data>', results, re.DOTALL)
     app_data = ",".join(app_lst)
@@ -238,7 +253,7 @@ def write_dict1(fh=sys.stdout,tee=True):
 #    if not dict_str == None and not arguments.t == None and not arguments.s:
     if tee:
         logger.info("tee is true, copy input data to output stream")
-        dict_str = json.dumps(extend_name(in_dict,'-1'))				# extend name to ovoid name conflicts
+        dict_str = json.dumps(extend_name(in_dict,'-1'),sort_keys=True)				# extend name to ovoid name conflicts
     if not dict_str == None and not arguments.s:
         fh.write("<upstream_data>\n")
         fh.write(dict_str)
@@ -279,7 +294,7 @@ smethod = 'json'
     
 def encode_data(out_data,fh=sys.stdout):
     if smethod == 'json':
-           fh.write(json.dumps(out_data))
+           fh.write(json.dumps(out_data,sort_keys=True))
     elif smethod == 'simple':
            for key in out_data:
                fh.write('{"%s":"%s"}'%(key,out_data[key]))
@@ -334,7 +349,7 @@ def parse_args(parser):
     logger.info("scrapped data %s"%in_dict)
     logger.info("upstream data %s"%g_upstream_dict)
     dct = args.__dict__.copy()
-#    print(in_dict)
+    replacements = {}
 #  resolve any indirect references
     for key, val in dct.items():
 #        print("key ",key,"value ",val)
@@ -343,21 +358,28 @@ def parse_args(parser):
             ptr = val.split("?")[1]
             new_val = get_env(ptr)
             logger.info("lookup key %s was %s now %s"%(ptr,val,new_val))
-        if type(val) == str and '*' in val:
-            ptr = val.split("*")[1]
+        while type(new_val) == str and new_val[0] == '*':
+            ptr = new_val.split("*")[1]
             logger.info("indirect search for %s"%ptr)
+            new_val = ptr
             for ink in in_dict:
                 if ptr in ink and not in_dict[ink] == None:    # if the in_dict value is a string and the ptr is in the str we have a match
                     new_val = in_dict[ink]
+                    replacements[ink] = new_val
                     logger.info("found in arguments %s:%s"%(ptr,new_val))
                     break
             for ink in g_upstream_dict:
                 if ptr == ink and not g_upstream_dict[ink] == None:    # if the in_dict value is a string and the ptr is in the str we have a match
                     new_val = g_upstream_dict[ink]
+                    replacements[ink] = new_val
                     logger.info("found in upstream %s:%s"%(ptr,new_val))
                     break
         setattr(args, key, eval_argument(new_val))
     logger.info("final arguments %s"%args)
+    cmd_line = " ".join(sys.argv)
+    for key, value in replacements.items():
+        cmd_line = cmd_line.replace("*"+key,value)
+    write_dict({"command_line":cmd_line})
     tee_output = args.t
     arguments = args
     return args
@@ -486,6 +508,16 @@ def save_model(model, fname):
     logger.info("saving model as %s"%fname)
     joblib.dump(model, fname) 
     write_dict({'model_file':fname})
+    
+def generate_file(name, ext, arg_v, file_arg):
+#    print("type ",type(model))
+    argv_file = getattr(arg_v, file_arg)
+    if argv_file == None:
+        argv_file = name+"_"+str(uuid.uuid1())+'.'+ext
+        setattr(arg_v, file_arg, argv_file)
+    logger.info("saving as %s"%argv_file)
+    write_dict({name:argv_file})
+    return arg_v
 
 
 def add_arguments(parser,arg_list):
@@ -520,6 +552,7 @@ def model_options(parser):
 
 # all options
 def all_options(parser):
+    parser.add_argument('-id',default='not_provided',help='Associate with external id.')
     parser.add_argument('-t',help='Copy upstream data to downstream.',action="store_true")
     parser.add_argument('-s',help='Supress dict output.',action="store_true")
     parser.add_argument('-b',help='Disable read arguments from stdin.',action="store_true")

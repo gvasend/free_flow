@@ -1,5 +1,4 @@
-
-#!/usr/bin/env python
+#!/usr/bin/python 
 print("extractor.py")
 
 import argparse
