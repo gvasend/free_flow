@@ -9,6 +9,9 @@ except:
     import thread as _thread
     version = '2.7'
 import stamp
+from ff_crypto import AESCipher
+
+cryptor = AESCipher('free_flow')
 
 import socket
 from pubsub import pub
@@ -22,7 +25,7 @@ connected = False
 
 # udp_bridge - exchange broadcasts between internal pubsub and UDP
 
-UDP_IP = '10.0.1.4'
+UDP_IP = '10.0.1.25'
 UDP_PORT_BASE = 8889
 
 sock = socket.socket(socket.AF_INET, # Internet
@@ -80,16 +83,17 @@ def udp_configure(topicObj=pub.AUTO_TOPIC, data=None):
 
 def udp_send(topicObj=pub.AUTO_TOPIC, data=None):
     global sock
+ #   print('udp_send')
     if not connected:
         return None
     top = topicObj.getName().split('.source(',1)
     top0 = top[0]
     msg = stamp.create_stamp(top0, data)
-    xml = xmltodict.unparse(msg)
+    xml = payload_encode(xmltodict.unparse(msg))
 #    print('before filter:', topicObj.getName(), data, xml)
     if "source(udp)" not in topicObj.getName():								
         udplogger.debug('%d | udp_send | %s | %s | message: "%s"' % (os.getpid(), topicObj.getName(), msg['publish']['message_id'], msg))
-        if version == '3.X':
+        if version == '3.X' and type(xml) == str:
             sock.sendto(bytes(xml,'utf-8'), ('<broadcast>', UDP_PORT_BASE))				
             sock.sendto(bytes(xml,'utf-8'), ('<broadcast>', UDP_PORT_BASE+1))
         else:
@@ -116,10 +120,13 @@ def udp_receive( threadName ):
     udplogger.debug("udp receiver thread starting")
     while True:
         data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes						# UDP is limited in size. All messages will need to fit in this this size. Need to configure to max size (TODO)
+#        print('received ',data)
+        data = payload_decode(data)
         udplogger.debug("%d | receive | None | None | received data from %s" % (os.getpid(),str(addr)))
-        if host_self(addr[0]):
-            continue
+#        if host_self(addr[0]):
+#            continue
         rcv_dict = xmltodict.parse(data)
+#        print('received1 ',rcv_dict)
         udplogger.debug("%d | udp_receive | %s | %s | data received %s" % (os.getpid(), rcv_dict['publish']['topic'],rcv_dict['publish']['message_id'],rcv_dict))
         publish = rcv_dict['publish']
         topic = publish['topic']
@@ -129,7 +136,10 @@ def udp_receive( threadName ):
         msg['received_from'] = addr															# Add sender address to message. Should not interfere with normal use of the message.
 #        print("UDP to pubsub:", "(", addr, ")", topic, _thread.get_ident(), msg)
 #        print "publish:", topic, msg
-        pub.sendMessage(topic+'.source(udp)', data=msg)
+        try:
+            pub.sendMessage(topic+'.source(udp)', data=msg)
+        except:
+            pass
         current_message = None
         current_topic = None		
 	
@@ -144,8 +154,20 @@ def host_self(h2):
 #        print("host is not self")
         return False
 
-pub.subscribe(udp_configure, 'uav.udp_configure')	
+"""
+def payload_encode(data):
+    return data
+    
+def payload_decode(data):
+    return data
+"""
+        
+def payload_encode(in_str):
+    return cryptor.encrypt(in_str)
+    
+def payload_decode(in_str):
+    return cryptor.decrypt(in_str)	
    
-pub.subscribe(udp_send, 'uav')	
+pub.subscribe(udp_send, 'ff')	
 
 

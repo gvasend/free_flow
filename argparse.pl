@@ -31,14 +31,17 @@ show_arguments :-
 add_argument(Arg, Attr) :-
     \+ argument(Arg, _),
     is_list(Attr),
-    assert(argument(Arg, Attr)), !.
+    assert(argument(Arg, Attr)), 
+    listing(argument),
+    !.
 add_argument(_) :- throw('Unable to add argument').
  
  argparse1(Exp,ArgList) :-
     findall(Ar, argument(Ar), Exp),
     current_prolog_flag(argv, AllArgs),
-    findall(arg(AName,Sarg), (append([Farg, Sarg], Remain, AllArgs), atom_concat('--', AName, Farg)), ArgList1),
-    findall(arg(AName,true), (append([Farg], Remain, AllArgs), \+atom_concat('--', AName, Farg), atom_concat('-',AName,Farg)), ArgList2),
+    writeln(AllArgs),
+    findall(arg(AName,Sarg), (nextto(Farg, Sarg, AllArgs), atom_concat('--', AName, Farg)), ArgList1),
+    findall(arg(AName,true), (member(Farg, AllArgs), \+atom_concat('--', AName, Farg), atom_concat('-',AName,Farg)), ArgList2),
     append(ArgList1, ArgList2, ArgList),
     writeln(ArgList).
 
@@ -127,6 +130,7 @@ log_file(Message) :-
 argparse :- argparse(_).
 argparse(Arglist) :-    
     argparse1(Expected, Arglist1),
+    format('expected ~w found ~w\n',[Expected, Arglist1]),
     handle_arguments(Arglist1),
     get_missing_args(Expected, Arglist1, Arglist),
     (

@@ -1569,3 +1569,334 @@ entry(download_manager,1506063591.0160315,error('No link found for solicitation 
 entry(download_manager,1506068663.3422763,error('No link found for solicitation SPRDL117R0436','SPRDL117R0436')).
 entry(download_manager,1506081109.936239,error(error(existence_error(url,'https://www.fbo.gov/spg/VA/SFaVAMC/VAMCCO80220/Awards/V797D-40161 VA263-17-F-1379.html'),context(_G137,status(404,'Not Found'))),'Va26317Q0983')).
 entry(download_manager,1506082644.1203012,error(error(existence_error(url,'https://www.fbo.gov/spg/DHS/USCG/VPLMLCP/FY18_DOCKSIDE_USCGC_SEQUOIA /listing.html'),context(_G137,status(404,'Not Found'))),'FY18_DOCKSIDE_USCGC_SEQUOIA ')).
+entry(download_manager,1521632802.9875555,error(error(existence_error(url,'https://www.fbo.gov/404'),context(_G211,status(404,'Not Found'))),'RFI-BDAEN1801')).
+entry(download_manager,1521633641.1355693,error('No link found for solicitation 3MS0113','3MS0113')).
+entry(download_manager,1522753752.168249,error(error(existence_error(url,'https://www.fbo.gov/spg/GSA/GSAOED/WCAB/2018-Society_of_American_Military_Engineers_Joint_Industry_Days_Federal_Agency_Forum /listing.html'),context(_G137,status(404,'Not Found'))),'2018-Society_of_American_Military_Engineers_Joint_Industry_Days_Federal_Agency_Forum ')).
+entry(download_manager,1522753909.8985524,error('No link found for solicitation SPE7M518T6780','SPE7M518T6780')).
+entry(download_manager,1522754674.744432,error('No link found for solicitation SPE7M118T5625','SPE7M118T5625')).
+entry(download_manager,1522759729.9615414,error('No link found for solicitation SPE3SE18Q0909','SPE3SE18Q0909')).
+entry(download_manager,1522760022.1987152,error('No link found for solicitation SPE4A718T8603','SPE4A718T8603')).
+entry(download_manager,1522761794.1346786,error('No link found for solicitation SPE7M318T1282','SPE7M318T1282')).
+entry(download_manager,1522762596.523533,error('No link found for solicitation AG-3JL0-0SS-18-0004','AG-3JL0-0SS-18-0004')).
+entry(download_manager,1522763996.0640829,error('No link found for solicitation W52P1J-18-R-ACCENT','W52P1J-18-R-ACCENT')).
+entry(download_manager,1522765654.4814625,error('No link found for solicitation W912PF18R0005','W912PF18R0005')).
+entry(download_manager,1522765715.738867,error('No link found for solicitation SPE7M518T078L','SPE7M518T078L')).
+entry(download_manager,1522765775.940409,error(error(existence_error(url,'https://www.fbo.gov/spg/DHS/FEMA/PP5-2/70FB7018R00000021 /listing.html'),context(_G137,status(404,'Not Found'))),'70FB7018R00000021 ')).
+entry(download_manager,1522767782.2590563,error('No link found for solicitation SPE7M518T082R','SPE7M518T082R')).
+entry(download_manager,1522767797.0093055,error('No link found for solicitation W912GB-18-R-0016-Industry-Day','W912GB-18-R-0016-Industry-Day')).
+entry(download_manager,1522770049.4390366,error('No link found for solicitation SPEFA518T1233','SPEFA518T1233')).
+entry(download_manager,1522772766.2665086,error('No link found for solicitation SPE4A518T312N','SPE4A518T312N')).
+entry(download_manager,1522774072.4257748,error('No link found for solicitation SPE7L318T9533','SPE7L318T9533')).
+entry(download_manager,1522775325.9410486,error('No link found for solicitation SPE4A718T9044','SPE4A718T9044')).
+entry(download_manager,1522775747.1775506,error('No link found for solicitation SPE4A718T9145','SPE4A718T9145')).
+entry(download_manager,1522776431.7567046,error('No link found for solicitation SPE4A618T458W','SPE4A618T458W')).
+entry(download_manager,1522776848.9151993,error('No link found for solicitation N00019-16-G-RFPREQ-PMA-201-0239','N00019-16-G-RFPREQ-PMA-201-0239')).
+entry(download_manager,1522776995.4021287,error('No link found for solicitation N6449818Q0002','N6449818Q0002')).
+entry(download_manager,1522777104.8838885,error('No link found for solicitation SPE7MC17TT731','SPE7MC17TT731')).
+entry(download_manager,1522777612.6037421,error('No link found for solicitation SPE7L117TK164','SPE7L117TK164')).
+entry(download_manager,1522778567.2976716,error(error(existence_error(url,'https://www.fbo.gov/spg/DON/NAVAIR/N00019/N00019-18-RFPREQ-PMA-274-0081 /listing.html'),context(_G137,status(404,'Not Found'))),'N00019-18-RFPREQ-PMA-274-0081 ')).
+entry(download_manager,1522780668.9076982,error('No link found for solicitation SP470518T0021','SP470518T0021')).
+entry(download_manager,1522782332.3590922,error('No link found for solicitation SPRAL118R0022','SPRAL118R0022')).
+entry(download_manager,1522783191.0590863,error('No link found for solicitation SPE4A817Q0062','SPE4A817Q0062')).
+entry(download_manager,1522783251.0438375,error('No link found for solicitation SPE7MC17TS255','SPE7MC17TS255')).
+entry(download_manager,1522783754.314191,error(error(existence_error(url,'https://www.fbo.gov/spg/DHS/USCG/USCGCEUM/70Z082-18-B-PAT006-00 /listing.html'),context(_G137,status(404,'Not Found'))),'70Z082-18-B-PAT006-00 ')).
+entry(download_manager,1522783990.2796748,error('No link found for solicitation SPE7L118T5870','SPE7L118T5870')).
+entry(download_manager,1522786334.9681551,error('No link found for solicitation SPE8E718T1675','SPE8E718T1675')).
+entry(download_manager,1522788190.3376231,error('No link found for solicitation SPE4A717U0395','SPE4A717U0395')).
+entry(download_manager,1522788610.4204848,error('No link found for solicitation 9453','9453')).
+entry(download_manager,1522790080.2309759,error(error(existence_error(url,'https://www.fbo.gov/spg/MCC/MCCMCC/MCCMCC01/RFP-QCBS-MCA-M-PP-13-CIF-COMPACT /listing.html'),context(_G137,status(404,'Not Found'))),'RFP-QCBS-MCA-M-PP-13-CIF-COMPACT ')).
+entry(download_manager,1522794038.0533612,error('No link found for solicitation F4F5AL7355A001','F4F5AL7355A001')).
+entry(download_manager,1522794934.5073204,error('No link found for solicitation SPE7L718T0084','SPE7L718T0084')).
+entry(download_manager,1522795210.0127418,error('No link found for solicitation SPE7L317TT644','SPE7L317TT644')).
+entry(download_manager,1522795222.9170203,error(error(existence_error(url,'https://www.fbo.gov/spg/VA/DtVAMC/VAMCCO80220/Awards/VA119-17-D-0012 36C25018N1644 P00001.html'),context(_G137,status(404,'Not Found'))),'506R88070')).
+entry(download_manager,1522796924.1483777,error('No link found for solicitation SPE4A718T5735','SPE4A718T5735')).
+entry(download_manager,1522797143.6608834,error('No link found for solicitation SPE7L718T2976','SPE7L718T2976')).
+entry(download_manager,1522798270.6570885,error(error(existence_error(url,'https://www.fbo.gov/spg/DOT/FHWA/71/693C7318B000016 /listing.html'),context(_G137,status(404,'Not Found'))),'693C7318B000016 ')).
+entry(download_manager,1522798463.9903193,error('No link found for solicitation 36C26118Q0230','36C26118Q0230')).
+entry(download_manager,1522798658.6294205,error('No link found for solicitation SPE4A718T6426','SPE4A718T6426')).
+entry(download_manager,1522801198.8575504,error('No link found for solicitation SPE4A718T1753','SPE4A718T1753')).
+entry(download_manager,1522801722.7643907,error('No link found for solicitation SPE4A517R0904','SPE4A517R0904')).
+entry(download_manager,1522802609.7465725,error('No link found for solicitation SPE7L318T3990','SPE7L318T3990')).
+entry(download_manager,1522803891.434576,error(error(existence_error(url,'https://www.fbo.gov/spg/DOJ/FBI/PPMS1/DJF-18-0700-PR-0001152B /listing.html'),context(_G137,status(404,'Not Found'))),'DJF-18-0700-PR-0001152B ')).
+entry(download_manager,1522804078.16068,error('No link found for solicitation W911SA-15-T0176','W911SA-15-T0176')).
+entry(download_manager,1522805008.2026033,error('No link found for solicitation SB022218','SB022218')).
+entry(download_manager,1522806332.5638554,error('No link found for solicitation SPE4A618Q0550','SPE4A618Q0550')).
+entry(download_manager,1522808375.0905266,error('No link found for solicitation SPE7M318T3241','SPE7M318T3241')).
+entry(download_manager,1522809223.911064,error('No link found for solicitation N0010417RNB93','N0010417RNB93')).
+entry(download_manager,1522810247.005006,error('No link found for solicitation SPE7L118T3853','SPE7L118T3853')).
+entry(download_manager,1522811860.1899526,error('No link found for solicitation SPE7M518T8637','SPE7M518T8637')).
+entry(download_manager,1522812218.4769957,error('No link found for solicitation N0010417RNB00','N0010417RNB00')).
+entry(download_manager,1522812301.8356032,error('No link found for solicitation W81EWF80182136','W81EWF80182136')).
+entry(download_manager,1522812672.1937046,error(error(existence_error(url,'https://www.fbo.gov/spg/DON/USMC/M67004/Awards/M67004-18-P-3051 .html'),context(_G137,status(404,'Not Found'))),'M6700418Q0001')).
+entry(download_manager,1522813181.0465477,error('No link found for solicitation FA480018R0007','FA480018R0007')).
+entry(download_manager,1522816148.2975736,error('No link found for solicitation N0010418QBL81','N0010418QBL81')).
+entry(download_manager,1522818283.504138,error('No link found for solicitation SPE7L318T2464','SPE7L318T2464')).
+entry(download_manager,1522820248.854183,error('No link found for solicitation SPE5E318T4058','SPE5E318T4058')).
+entry(download_manager,1522820882.1083348,error('No link found for solicitation SPE4A618T368P','SPE4A618T368P')).
+entry(download_manager,1522825497.054845,error(error(existence_error(url,'https://www.fbo.gov/spg/VA/VANCA/VANCA/Awards/GS-03F-054GA 36C78618F0393.html'),context(_G137,status(404,'Not Found'))),'36C78618Q0092')).
+entry(download_manager,1522826209.936526,error('No link found for solicitation SPE7M518T100F','SPE7M518T100F')).
+entry(download_manager,1522826328.1682556,error('No link found for solicitation N4425518F9503','N4425518F9503')).
+entry(download_manager,1522827557.9802485,error('No link found for solicitation SPE4A718T035X','SPE4A718T035X')).
+entry(download_manager,1522827882.0532084,error('No link found for solicitation SPE4A618T7417','SPE4A618T7417')).
+entry(download_manager,1522828703.654597,error('No link found for solicitation SPE5E418T1446','SPE5E418T1446')).
+entry(download_manager,1522828825.4909422,error('No link found for solicitation SPE7M117TK081','SPE7M117TK081')).
+entry(download_manager,1522831402.0066977,error(error(existence_error(url,'https://www.fbo.gov/spg/DHS/USCS/FPSB/ 70B03C18Q00000054/listing.html'),context(_G137,status(404,'Not Found'))),' 70B03C18Q00000054')).
+entry(download_manager,1522832322.7791178,error('No link found for solicitation W81K00-18-P-0181','W81K00-18-P-0181')).
+entry(download_manager,1522832479.2145374,error('No link found for solicitation SPE4A618T3357','SPE4A618T3357')).
+entry(download_manager,1522832533.4828944,error('No link found for solicitation SPE7L118T3177','SPE7L118T3177')).
+entry(download_manager,1522832582.9869816,error('No link found for solicitation SPE8E518T1074','SPE8E518T1074')).
+entry(download_manager,1522832676.112858,error('No link found for solicitation SPE7M318T0829','SPE7M318T0829')).
+entry(download_manager,1522832794.692483,error('No link found for solicitation SPE7M418T1503','SPE7M418T1503')).
+entry(download_manager,1522833414.1836324,error('No link found for solicitation SPE4A617TCK55','SPE4A617TCK55')).
+entry(download_manager,1522833459.8429365,error('No link found for solicitation SPE4A718T3903','SPE4A718T3903')).
+entry(download_manager,1522833567.9514866,error('No link found for solicitation SPE7MC18T2863','SPE7MC18T2863')).
+entry(download_manager,1522833852.8088713,error('No link found for solicitation SPE7L018T2705','SPE7L018T2705')).
+entry(download_manager,1522833929.7788842,error('No link found for solicitation SPE4A517TDB60','SPE4A517TDB60')).
+entry(download_manager,1522833975.382676,error('No link found for solicitation SPE7M518T3122','SPE7M518T3122')).
+entry(download_manager,1522833990.6253772,error('No link found for solicitation SPE7M518T6637','SPE7M518T6637')).
+entry(download_manager,1522834041.5918393,error('No link found for solicitation SPRTA1-8Q-0-073','SPRTA1-8Q-0-073')).
+entry(download_manager,1522834056.4506712,error('No link found for solicitation SPE7M118T010G','SPE7M118T010G')).
+entry(download_manager,1522834071.3903577,error('No link found for solicitation SPE7MC18T5403','SPE7MC18T5403')).
+entry(download_manager,1522834120.6213899,error('No link found for solicitation SPE4A618U0129','SPE4A618U0129')).
+entry(download_manager,1522834137.1236658,error('No link found for solicitation SPE4A618T297H','SPE4A618T297H')).
+entry(download_manager,1522834247.3456035,error('No link found for solicitation SPE7L118T4984','SPE7L118T4984')).
+entry(download_manager,1522834296.8498414,error('No link found for solicitation SPE4A618T381Q','SPE4A618T381Q')).
+entry(download_manager,1522834347.1613333,error('No link found for solicitation SPE4A618T421H','SPE4A618T421H')).
+entry(download_manager,1522834711.9512253,error('No link found for solicitation SPE7M018T2793','SPE7M018T2793')).
+entry(download_manager,1522834983.7335508,error('No link found for solicitation 36C24718Q0295','36C24718Q0295')).
+entry(download_manager,1522834998.1672037,error('No link found for solicitation SPE4A718T8184','SPE4A718T8184')).
+entry(download_manager,1522835012.750566,error('No link found for solicitation SPE5E818T2535','SPE5E818T2535')).
+entry(download_manager,1522835027.5932093,error('No link found for solicitation SPE7M418T5738','SPE7M418T5738')).
+entry(download_manager,1522835042.4086552,error('No link found for solicitation SPE4A618T8573','SPE4A618T8573')).
+entry(download_manager,1522835221.8293295,error('No link found for solicitation SPE7M518T095R','SPE7M518T095R')).
+entry(download_manager,1522835306.1300855,error('No link found for solicitation SPE7L218T1226','SPE7L218T1226')).
+entry(download_manager,1522835354.968759,error('No link found for solicitation SPE4A618T6339','SPE4A618T6339')).
+entry(download_manager,1522835440.5694022,error('No link found for solicitation SPE4A618R0030','SPE4A618R0030')).
+entry(download_manager,1522835455.2077668,error('No link found for solicitation SPE7M518T050P','SPE7M518T050P')).
+entry(download_manager,1522835501.2999206,error('No link found for solicitation SPE3SE-18-Q-0907','SPE3SE-18-Q-0907')).
+entry(download_manager,1522835515.853509,error('No link found for solicitation SPE4A718T8322','SPE4A718T8322')).
+entry(download_manager,1522835660.608376,error('No link found for solicitation SPE7L317TH616','SPE7L317TH616')).
+entry(download_manager,1522835769.3993475,error('No link found for solicitation N6339418R0006','N6339418R0006')).
+entry(download_manager,1522835784.553162,error('No link found for solicitation SPE7M418T5785','SPE7M418T5785')).
+entry(download_manager,1522835798.8976336,error('No link found for solicitation SPE5E818Q0426','SPE5E818Q0426')).
+entry(download_manager,1522835908.0756378,error('No link found for solicitation SPE4A718T8877','SPE4A718T8877')).
+entry(download_manager,1522836264.753113,error('No link found for solicitation 36C26118Q0317','36C26118Q0317')).
+entry(download_manager,1522836280.8247733,error('No link found for solicitation SPE7L117TH936','SPE7L117TH936')).
+entry(download_manager,1522836295.6373863,error('No link found for solicitation SPE7M318T3218','SPE7M318T3218')).
+entry(download_manager,1522836377.646791,error('No link found for solicitation SPE7MC18T6239','SPE7MC18T6239')).
+entry(download_manager,1522836393.3440135,error('No link found for solicitation SPE4A717U0292','SPE4A717U0292')).
+entry(download_manager,1522836439.0710158,error('No link found for solicitation SPE5E718Q0198','SPE5E718Q0198')).
+entry(download_manager,1522836453.5999923,error('No link found for solicitation SPE7L318U0008','SPE7L318U0008')).
+entry(download_manager,1522836598.1705241,error('No link found for solicitation SPE4A718T8057','SPE4A718T8057')).
+entry(download_manager,1522836676.2413473,error('No link found for solicitation SPE4A618T196Q','SPE4A618T196Q')).
+entry(download_manager,1522836885.4394796,error('No link found for solicitation SPE605-18-Q-0302','SPE605-18-Q-0302')).
+entry(download_manager,1522837102.2077155,error('No link found for solicitation SPE4A718T7607','SPE4A718T7607')).
+entry(download_manager,1522837311.610249,error('No link found for solicitation SPE4A518T045G','SPE4A518T045G')).
+entry(download_manager,1522837359.0097904,error('No link found for solicitation SPE1C117T2797','SPE1C117T2797')).
+entry(download_manager,1522837409.0107052,error('No link found for solicitation SPRWA1-18-Q-0012','SPRWA1-18-Q-0012')).
+entry(download_manager,1522837494.0756922,error('No link found for solicitation SPEFA118T0434','SPEFA118T0434')).
+entry(download_manager,1522837577.5392475,error('No link found for solicitation SPE4A617TBM46','SPE4A617TBM46')).
+entry(download_manager,1522837631.222425,error('No link found for solicitation SPE4A618T143N','SPE4A618T143N')).
+entry(download_manager,1522837713.6028776,error('No link found for solicitation SPE7L418T0608','SPE7L418T0608')).
+entry(download_manager,1522837823.2367496,error('No link found for solicitation SPE4A618T118V','SPE4A618T118V')).
+entry(download_manager,1522837873.1915927,error('No link found for solicitation SPE4A618T3964','SPE4A618T3964')).
+entry(download_manager,1522837954.1905043,error('No link found for solicitation SPE7M318T3868','SPE7M318T3868')).
+entry(download_manager,1522838327.2272,error('No link found for solicitation 36C24718C00792','36C24718C00792')).
+entry(download_manager,1522838341.7630887,error('No link found for solicitation SPE4A518T3690','SPE4A518T3690')).
+entry(download_manager,1522838386.9393697,error('No link found for solicitation GLEN-14-1303','GLEN-14-1303')).
+entry(download_manager,1522886418.9470868,error('No link found for solicitation 36C78618Q0199','36C78618Q0199')).
+entry(download_manager,1522886566.0978806,error('No link found for solicitation SPE4A618T1450','SPE4A618T1450')).
+entry(download_manager,1522889748.6037827,error('No link found for solicitation 36C25618Q9199','36C25618Q9199')).
+entry(download_manager,1522895317.42818,error('No link found for solicitation 36C25618Q0355','36C25618Q0355')).
+entry(download_manager,1522897512.657747,error('No link found for solicitation 36C25618Q9201','36C25618Q9201')).
+entry(download_manager,1522901083.7800615,error(error(existence_error(url,'https://www.fbo.gov/spg/USDA/FS/281/12034318Q0034 /listing.html'),context(_G137,status(404,'Not Found'))),'12034318Q0034 ')).
+entry(download_manager,1522902304.7172146,error(error(existence_error(url,'https://www.fbo.gov/spg/USAF/AFMC/88 CONS/FA860117R0082/listing.html'),context(_G137,status(404,'Not Found'))),'FA860117R0082')).
+entry(download_manager,1522905020.6923802,error(error(existence_error(url,'https://www.fbo.gov/spg/DHS/OCPO/DHS-OCPO/DHS-70RTAC18RFI000004-FPAMS /listing.html'),context(_G137,status(404,'Not Found'))),'DHS-70RTAC18RFI000004-FPAMS ')).
+entry(download_manager,1522905778.3934176,error('No link found for solicitation 36C25518N1231','36C25518N1231')).
+entry(download_manager,1522905968.1844716,error('No link found for solicitation N00173-18-Q-KN02','N00173-18-Q-KN02')).
+entry(download_manager,1522912114.1189995,error('No link found for solicitation IAP-1701-16','IAP-1701-16')).
+entry(download_manager,1522915673.1914086,error('No link found for solicitation N0001914G004ALE','N0001914G004ALE')).
+entry(download_manager,1522916194.0585892,error(error(existence_error(url,'https://www.fbo.gov/spg/USAF/AFMC/88 CONS/FA8601-17-R-0025/listing.html'),context(_G137,status(404,'Not Found'))),'FA8601-17-R-0025')).
+entry(download_manager,1522917326.5906544,error(error(existence_error(url,'https://www.fbo.gov/spg/USAF/AFMC/AFFTC/F1STAB8061B001 /listing.html'),context(_G137,status(404,'Not Found'))),'F1STAB8061B001 ')).
+entry(download_manager,1522917748.2892067,error(error(existence_error(url,'https://www.fbo.gov/spg/USAF/AFMC/88 CONS/FA8601-18-Q-0075/listing.html'),context(_G137,status(404,'Not Found'))),'FA8601-18-Q-0075')).
+entry(download_manager,1522917932.3748007,error('No link found for solicitation SPRTA1-18-Q-0270','SPRTA1-18-Q-0270')).
+entry(download_manager,1522918081.788825,error(error(existence_error(url,'https://www.fbo.gov/spg/USAF/AFMC/88 CONS/FA8601-18-Q-0069/listing.html'),context(_G137,status(404,'Not Found'))),'FA8601-18-Q-0069')).
+entry(download_manager,1522918797.929739,error(connection_lost)).
+entry(download_manager,1522926670.633906,error('No link found for solicitation 12034318Q0034','12034318Q0034')).
+entry(download_manager,1522926919.9500275,error(error(existence_error(url,'https://www.fbo.gov/spg/VA/ICVAMC584/ICVAMC584/Awards/V797P-4297B 36C26318N1840.html'),context(_G137,status(404,'Not Found'))),'36C26318Q0415')).
+entry(download_manager,1522927635.5187645,error('No link found for solicitation 80GSFC18Q0009','80GSFC18Q0009')).
+entry(download_manager,1522934089.2452617,error('No link found for solicitation N6817118Q6031','N6817118Q6031')).
+entry(download_manager,1522934407.143277,error(error(existence_error(url,'https://www.fbo.gov/spg/DON/NAVSUP/N000104/N00104-18-R-DA01 /listing.html'),context(_G137,status(404,'Not Found'))),'N00104-18-R-DA01 ')).
+entry(download_manager,1522935624.7411275,error('No link found for solicitation W91YTZ-18-T-0174','W91YTZ-18-T-0174')).
+entry(download_manager,1522938500.7416155,error('No link found for solicitation FA8539-16-R-0008','FA8539-16-R-0008')).
+entry(download_manager,1522942556.8337371,error(error(existence_error(url,'https://www.fbo.gov/spg/USAF/AFMC/88 CONS/FA8601-18-Q-0074/listing.html'),context(_G137,status(404,'Not Found'))),'FA8601-18-Q-0074')).
+entry(download_manager,1522943016.39854,error('No link found for solicitation F1SEAD8037BG01','F1SEAD8037BG01')).
+entry(download_manager,1522944645.4774675,error('No link found for solicitation 103018BMD11','103018BMD11')).
+entry(download_manager,1522944801.7324483,error('No link found for solicitation SPE7L518R0039','SPE7L518R0039')).
+entry(download_manager,1522947504.8692505,error('No link found for solicitation N0017817R2055','N0017817R2055')).
+entry(download_manager,1522948554.2866414,error(error(existence_error(url,'https://www.fbo.gov/spg/DOJ/BPR/PPB/RFP-200-1354-ES   /listing.html'),context(_G137,status(404,'Not Found'))),'RFP-200-1354-ES   ')).
+entry(download_manager,1522948804.5025759,error('No link found for solicitation DJA-18-ALPD-PR-0367\\t','DJA-18-ALPD-PR-0367\\t')).
+entry(download_manager,1522949279.3083165,error('No link found for solicitation N6883618Q0107','N6883618Q0107')).
+entry(download_manager,1522960503.6698701,error('No link found for solicitation W81EWF80374684','W81EWF80374684')).
+entry(download_manager,1522962050.5477967,error('No link found for solicitation HSFE70-17-R-0018','HSFE70-17-R-0018')).
+entry(download_manager,1522962812.1686387,error(error(existence_error(url,'https://www.fbo.gov/spg/DON/NAVSUP/N000104/N0010418RK086 /listing.html'),context(_G137,status(404,'Not Found'))),'N0010418RK086 ')).
+entry(download_manager,1522964164.347222,error('No link found for solicitation 20139','20139')).
+entry(download_manager,1522971052.2573235,error(error(existence_error(url,'https://www.fbo.gov/spg/USAF/AFMC/88 CONS/FA8601-18-R-0044/listing.html'),context(_G137,status(404,'Not Found'))),'FA8601-18-R-0044')).
+entry(download_manager,1522971354.3605952,error('No link found for solicitation W9124D-18-Q-6211','W9124D-18-Q-6211')).
+entry(download_manager,1522971606.860421,error('No link found for solicitation 140A0918Q0072','140A0918Q0072')).
+entry(download_manager,1523500062.995506,error(error(existence_error(url,'https://www.fbo.gov/404'),context(_G226,status(404,'Not Found'))),'RFQ-APHIS-WS-18-900094')).
+entry(download_manager,1523502327.345621,error('No link found for solicitation 504631','504631')).
+entry(download_manager,1523502942.587025,error('No link found for solicitation W81K00-18-T-0106','W81K00-18-T-0106')).
+entry(download_manager,1523504768.3261797,error('No link found for solicitation N6817118Q0038','N6817118Q0038')).
+entry(download_manager,1523505144.7249916,error('No link found for solicitation SPE4A718R0809','SPE4A718R0809')).
+entry(download_manager,1523516641.4462743,error(connection_lost)).
+entry(download_manager,1523519982.9106023,error(error(existence_error(url,'https://www.fbo.gov/spg/VA/ICVAMC584/ICVAMC584/Awards/36C26318P1620 P00001.html'),context(_G137,status(404,'Not Found'))),'36C26318P1620P0001')).
+entry(download_manager,1523520847.7448664,error('No link found for solicitation 6MI0245','6MI0245')).
+entry(download_manager,1523529580.2022908,error('No link found for solicitation SPRTA1-17-Q-0357','SPRTA1-17-Q-0357')).
+entry(download_manager,1523533570.4787755,error('No link found for solicitation FA8118-17-R-0032','FA8118-17-R-0032')).
+entry(download_manager,1523576311.0890672,error('No link found for solicitation F1S0AS8026B002','F1S0AS8026B002')).
+entry(download_manager,1523577096.4166756,error('No link found for solicitation 140G0218R0011','140G0218R0011')).
+entry(download_manager,1523578497.9251888,error('No link found for solicitation DHS_Vendor_Outreach_Session_March_2018','DHS_Vendor_Outreach_Session_March_2018')).
+entry(download_manager,1523578686.587438,error('No link found for solicitation N00019-16-RFPREQ-PMA-266-0115','N00019-16-RFPREQ-PMA-266-0115')).
+entry(download_manager,1523581519.1581056,error('No link found for solicitation 80NSSC18Q0333','80NSSC18Q0333')).
+entry(download_manager,1523585451.262562,error('No link found for solicitation 5AC083','5AC083')).
+entry(download_manager,1523586030.6848762,error('No link found for solicitation 040ADV-18Q-0071','040ADV-18Q-0071')).
+entry(download_manager,1523586764.860566,error('No link found for solicitation OACT-393-2015-0024','OACT-393-2015-0024')).
+entry(download_manager,1523586782.1379068,error('No link found for solicitation SLAC285155','SLAC285155')).
+entry(download_manager,1523586838.2617116,error(error(existence_error(url,'https://www.fbo.gov/spg/VA/VAAAHCS506/VAAAHCS506/Awards/36C25018P0623 P00001.html'),context(_G137,status(404,'Not Found'))),'VA25018AP6563')).
+entry(download_manager,1523587217.6414452,error('No link found for solicitation N3904018Q0147','N3904018Q0147')).
+entry(download_manager,1523588523.542004,error('No link found for solicitation EA-133W-18-RQ-0933','EA-133W-18-RQ-0933')).
+entry(download_manager,1523588749.977246,error('No link found for solicitation 70Z03818QL0000055','70Z03818QL0000055')).
+entry(download_manager,1523588765.571737,error('No link found for solicitation 70Z08018QDJ007','70Z08018QDJ007')).
+entry(download_manager,1523589490.8908727,error('No link found for solicitation F4FRQO7361A002','F4FRQO7361A002')).
+entry(download_manager,1523589614.2022347,error('No link found for solicitation FA8604-18-F-1084','FA8604-18-F-1084')).
+entry(download_manager,1523591359.9582844,error('No link found for solicitation 5BL035','5BL035')).
+entry(download_manager,1523592613.7688494,error('No link found for solicitation 80NSSC18Q0334','80NSSC18Q0334')).
+entry(download_manager,1523593156.635078,error('No link found for solicitation 80NSSC18Q0324','80NSSC18Q0324')).
+entry(download_manager,1523593312.4046142,error('No link found for solicitation Kent-Warwick-RI','Kent-Warwick-RI')).
+entry(download_manager,1523593824.9877346,error('No link found for solicitation N40443-18-Q-0141','N40443-18-Q-0141')).
+entry(download_manager,1523594757.9811528,error('No link found for solicitation N32205-18-Q-7030','N32205-18-Q-7030')).
+entry(download_manager,1523594808.3929048,error('No link found for solicitation 5Z4052','5Z4052')).
+entry(download_manager,1523597800.761981,error('No link found for solicitation FA700018T0037','FA700018T0037')).
+entry(download_manager,1523599006.329119,error('No link found for solicitation 80NSSC18Q0337','80NSSC18Q0337')).
+entry(download_manager,1523599162.869352,error('No link found for solicitation 70Z03818QW0000066','70Z03818QW0000066')).
+entry(download_manager,1523599807.6040053,error('No link found for solicitation 5AR070','5AR070')).
+entry(download_manager,1523601178.9735072,error('No link found for solicitation 5DZ030','5DZ030')).
+entry(download_manager,1523601339.858903,error(error(existence_error(url,'https://www.fbo.gov/404'),context(_G211,status(404,'Not Found'))),'Purchase_Request_FD2030-18-01996_Noun_Pilot_Afterburn_Spray_Bar_Application_J85_Engine_NSN_2915-00-782-1795_Part_Number_5011T29P')).
+entry(download_manager,1523602351.4402866,error('No link found for solicitation 15BNYM18Q0000007','15BNYM18Q0000007')).
+entry(download_manager,1523602620.4277875,error('No link found for solicitation 36C24618Q0471','36C24618Q0471')).
+entry(download_manager,1523603762.8858914,error('No link found for solicitation W91SSG-18-Q-XXXX','W91SSG-18-Q-XXXX')).
+entry(download_manager,1523604800.1238518,error(error(existence_error(url,'https://www.fbo.gov/spg/VA/FVAMROC/DVAMROC/Awards/V797P-7347A 36C26318N0432.html'),context(_G137,status(404,'Not Found'))),'36C26318N0432')).
+entry(download_manager,1523606932.8298137,error('No link found for solicitation W56HZV18R0065','W56HZV18R0065')).
+entry(download_manager,1523607685.3881526,error(error(existence_error(url,'https://www.fbo.gov/spg/VA/FVAMROC/DVAMROC/Awards/V797P-7347A 36C26318N0431.html'),context(_G137,status(404,'Not Found'))),'36C26318N0431')).
+entry(download_manager,1523607701.002943,error('No link found for solicitation FM304773040068','FM304773040068')).
+entry(download_manager,1523610801.5982416,error('No link found for solicitation 5ZF036','5ZF036')).
+entry(download_manager,1525265386.194291,error(error(existence_error(url,'https://www.fbo.gov/spg/VA/BaVAMC/VAMCCO80220/Awards/NNG15SD22B 36C24218F0806.html'),context(_G137,status(404,'Not Found'))),'36C24218Q0298')).
+entry(download_manager,1525274105.4939759,error('No link found for solicitation 4MI0309','4MI0309')).
+entry(download_manager,1525297299.6342957,error('No link found for solicitation 17-REG07_6TX0670','17-REG07_6TX0670')).
+entry(download_manager,1525399885.5495589,error('No link found for solicitation SS-5001','SS-5001')).
+entry(download_manager,1525399898.2331395,error(error(existence_error(url,'https://www.fbo.gov/spg/VA/VAGLHS/VAGLHCS/Awards/VA240C-16-D-0001 36C25218F3113.html'),context(_G137,status(404,'Not Found'))),'VA240C17R0022')).
+entry(download_manager,1525419329.520111,error(error(existence_error(url,'https://www.fbo.gov/spg/VA/VAGLHS/VAGLHCS/Awards/GS-21F-0185W 36C25218F0090.html'),context(_G137,status(404,'Not Found'))),'36C25218Q0163')).
+entry(download_manager,1525420442.9549057,error('No link found for solicitation SPRMM114RWM97','SPRMM114RWM97')).
+entry(download_manager,1525505933.9515667,error('No link found for solicitation W900KK15R0001','W900KK15R0001')).
+entry(download_manager,1525506156.326464,error('No link found for solicitation 2031ZA18Q00189','2031ZA18Q00189')).
+entry(download_manager,1525508124.6879585,error('No link found for solicitation HC102117QA062','HC102117QA062')).
+entry(download_manager,1525511320.328896,error(error(existence_error(url,'https://www.fbo.gov/404'),context(_G211,status(404,'Not Found'))),'N0017818R6029')).
+entry(download_manager,1525527333.075672,error('No link found for solicitation 70Z03818QJ0000052','70Z03818QJ0000052')).
+entry(download_manager,1525527366.4202976,error('No link found for solicitation 80NSSC18Q0240','80NSSC18Q0240')).
+entry(download_manager,1525527584.2546425,error('No link found for solicitation SPMYM3-18-Q-1024','SPMYM3-18-Q-1024')).
+entry(download_manager,1525527597.7591403,error('No link found for solicitation 36C26118Q0258','36C26118Q0258')).
+entry(download_manager,1525527693.154421,error('No link found for solicitation N3220518Q0130','N3220518Q0130')).
+entry(download_manager,1525527830.0920122,error('No link found for solicitation SSA-DCS-18-313D1-NOI-18','SSA-DCS-18-313D1-NOI-18')).
+entry(download_manager,1525527944.2307317,error('No link found for solicitation HHSN_NIH_NIDA_SS_18_062','HHSN_NIH_NIDA_SS_18_062')).
+entry(download_manager,1525528016.2523017,error('No link found for solicitation 80NSSC18Q0213','80NSSC18Q0213')).
+entry(download_manager,1525528197.026918,error('No link found for solicitation 36C26118Q0260','36C26118Q0260')).
+entry(download_manager,1525528381.186544,error('No link found for solicitation 36C24618Q0413','36C24618Q0413')).
+entry(download_manager,1525528488.5113506,error('No link found for solicitation 36C26218Q0277','36C26218Q0277')).
+entry(download_manager,1525528521.7726872,error('No link found for solicitation IFB18-032-18','IFB18-032-18')).
+entry(download_manager,1525528597.5162435,error('No link found for solicitation N66604-18-Q-0629','N66604-18-Q-0629')).
+entry(download_manager,1525528611.6370795,error('No link found for solicitation RFQ0000245','RFQ0000245')).
+entry(download_manager,1525528875.8240786,error('No link found for solicitation DJA18AIAOPR0321','DJA18AIAOPR0321')).
+entry(download_manager,1525528934.8131487,error('No link found for solicitation 140R8118Q0054','140R8118Q0054')).
+entry(download_manager,1525529232.2002397,error('No link found for solicitation 631800002','631800002')).
+entry(download_manager,1525529433.61913,error('No link found for solicitation 80NSSC18Q0227','80NSSC18Q0227')).
+entry(download_manager,1525529473.6168144,error('No link found for solicitation 36C24618Q0408','36C24618Q0408')).
+entry(download_manager,1525529487.4814293,error('No link found for solicitation N00173-18-Q-0097A','N00173-18-Q-0097A')).
+entry(download_manager,1525529807.1498535,error('No link found for solicitation SPRRA117R0260','SPRRA117R0260')).
+entry(download_manager,1525530893.350256,error('No link found for solicitation SPRDL1-16-R-0349','SPRDL1-16-R-0349')).
+entry(download_manager,1525531614.964335,error('No link found for solicitation SPRDL115R0386','SPRDL115R0386')).
+entry(download_manager,1525555196.7059746,error(error(existence_error(url,'https://www.fbo.gov/spg/VA/VAAAHCS506/VAAAHCS506/Awards/36C25018P1027 P00002.html'),context(_G137,status(404,'Not Found'))),'VA25018AP4730')).
+entry(download_manager,1525559553.3283696,error(error(existence_error(url,'https://www.fbo.gov/spg/DON/NAVSEA/NAVSEAHQ/Awards/N00024-15-C-5151_P00010 .html'),context(_G137,status(404,'Not Found'))),'N00024-15-C-5151_P00010')).
+entry(download_manager,1525559646.6594505,error(error(existence_error(url,'https://www.fbo.gov/spg/DON/NAVSEA/NAVSEAHQ/Awards/N00024-14-C-5104_P00030 .html'),context(_G137,status(404,'Not Found'))),'N00024-14-C-5104_P00030')).
+entry(download_manager,1525560722.315648,error(error(existence_error(url,'https://www.fbo.gov/spg/DON/NAVSEA/NAVSEAHQ/Awards/N00024-15-C-5151_P00009 .html'),context(_G137,status(404,'Not Found'))),'N00024-15-C-5151_P00009')).
+entry(download_manager,1525560734.5637155,error(error(existence_error(url,'https://www.fbo.gov/404'),context(_G211,status(404,'Not Found'))),'Purchase_Request_FD2030-18-00605_Noun_Aircraft_Turbine_Case_Application_F110_Engine_NSN_2840-01-447-2846PR_Part_Number_1276M30G0')).
+entry(download_manager,1525561254.0187628,error(error(existence_error(url,'https://www.fbo.gov/spg/DON/NAVSEA/NAVSEAHQ/Awards/ N00024-12-C-4309_P00056.html'),context(_G137,status(404,'Not Found'))),'N00024-12-C-4309_P00056')).
+entry(download_manager,1525562123.7569742,error('No link found for solicitation FM485280190782','FM485280190782')).
+entry(download_manager,1525562918.6972582,error('No link found for solicitation W911SA-15-T-0024','W911SA-15-T-0024')).
+entry(download_manager,1525564283.9905472,error('No link found for solicitation W911SA-13-C-0002P00003','W911SA-13-C-0002P00003')).
+entry(download_manager,1525564841.3115366,error('No link found for solicitation SPE4A518R0357','SPE4A518R0357')).
+entry(download_manager,1525565032.6084042,error('No link found for solicitation W81K00-18-T-0087','W81K00-18-T-0087')).
+entry(download_manager,1525565479.9262605,error('No link found for solicitation 80NSSC18Q0233','80NSSC18Q0233')).
+entry(download_manager,1525567275.4577048,error('No link found for solicitation N6449818J2R064','N6449818J2R064')).
+entry(download_manager,1525567973.8951275,error(error(existence_error(url,'https://www.fbo.gov/spg/DON/NAVSEA/NAVSEAHQ/Awards/N00024-15-C-5151_P00008 .html'),context(_G137,status(404,'Not Found'))),'N00024-15-C-5151_P00008')).
+entry(download_manager,1525568337.3740282,error(error(existence_error(url,'https://www.fbo.gov/spg/DON/NAVSEA/NAVSEAHQ/Awards/N00024-13-C-5116_P00050 .html'),context(_G137,status(404,'Not Found'))),'N00024-13-C-5116_P00050')).
+entry(download_manager,1525568373.9569557,error('No link found for solicitation 36C26218Q0279','36C26218Q0279')).
+entry(download_manager,1525570598.821677,error('No link found for solicitation SPE4A617U0105','SPE4A617U0105')).
+entry(download_manager,1525573326.1070576,error('No link found for solicitation SPE4A517TBP50','SPE4A517TBP50')).
+entry(download_manager,1525573409.070093,error('No link found for solicitation SPE7M118T4863','SPE7M118T4863')).
+entry(download_manager,1525573711.8299394,error(error(existence_error(url,'https://www.fbo.gov/404'),context(_G211,status(404,'Not Found'))),'C-3_Compressor_Blades_FA9101-18-R-1000')).
+entry(download_manager,1525573725.1848454,error('No link found for solicitation 7FL2440','7FL2440')).
+entry(download_manager,1525574297.620634,error(error(existence_error(url,'https://www.fbo.gov/spg/VA/CiVAMC/VAMCCO80220/Awards/V797D-50379 36C25018F1423.html'),context(_G137,status(404,'Not Found'))),'VA25018AP4895')).
+entry(download_manager,1525574688.6699023,error('No link found for solicitation SPE7MX-17-R-0132','SPE7MX-17-R-0132')).
+entry(download_manager,1525575169.974412,error('No link found for solicitation VA10115R0180','VA10115R0180')).
+entry(download_manager,1525575471.0125725,error(error(existence_error(url,'https://www.fbo.gov/spg/DON/NAVSEA/NAVSEAHQ/Awards/N00024-14-C-5104_P00034 .html'),context(_G137,status(404,'Not Found'))),'N00024-14-C-5104_P00034')).
+entry(download_manager,1525575573.6008837,error('No link found for solicitation SPE7M117R00960001','SPE7M117R00960001')).
+entry(download_manager,1525610719.2035887,error('No link found for solicitation 18-01509NSN_6115-00-342-1924HY\\t','18-01509NSN_6115-00-342-1924HY\\t')).
+entry(download_manager,1525611627.1493554,error('No link found for solicitation SPE4A717TQ910','SPE4A717TQ910')).
+entry(download_manager,1525612865.507413,error(error(existence_error(url,'https://www.fbo.gov/404'),context(_G211,status(404,'Not Found'))),'HQ0034-18-F-0048')).
+entry(download_manager,1525613065.9604316,error('No link found for solicitation SPE4A618T220U','SPE4A618T220U')).
+entry(download_manager,1525613617.2277222,error('No link found for solicitation HSFE01-17-R-0001','HSFE01-17-R-0001')).
+entry(download_manager,1525614595.3226318,error('No link found for solicitation SP470518T0122','SP470518T0122')).
+entry(download_manager,1525614653.7483017,error(error(existence_error(url,'https://www.fbo.gov/spg/DON/NAVSEA/NAVSEAHQ/Awards/N00024-14-C-5104_P00031 .html'),context(_G137,status(404,'Not Found'))),'N00024-14-C-5104_P00031')).
+entry(download_manager,1525615637.9461713,error('No link found for solicitation N00173-18-Q-0132','N00173-18-Q-0132')).
+entry(download_manager,1525616524.4473138,error('No link found for solicitation REQ-261-18-0004','REQ-261-18-0004')).
+entry(download_manager,1525618402.3782592,error('No link found for solicitation SPE7M518T6652','SPE7M518T6652')).
+entry(download_manager,1525618799.9311483,error('No link found for solicitation 72605555','72605555')).
+entry(download_manager,1525619493.5739472,error('No link found for solicitation SPE4A617TS885','SPE4A617TS885')).
+entry(download_manager,1525620161.9788551,error('No link found for solicitation SPE2DH17T5244','SPE2DH17T5244')).
+entry(download_manager,1525620381.3415592,error('No link found for solicitation N6247317R0207','N6247317R0207')).
+entry(download_manager,1525620670.7538772,error('No link found for solicitation N00019-17-R-0224','N00019-17-R-0224')).
+entry(download_manager,1525621694.796019,error('No link found for solicitation SPE7M917T7065','SPE7M917T7065')).
+entry(download_manager,1525622172.1993418,error('No link found for solicitation VA26317R0013','VA26317R0013')).
+entry(download_manager,1525623364.9435096,error('No link found for solicitation W31P4Q08A0018U0003','W31P4Q08A0018U0003')).
+entry(download_manager,1525625567.3762083,error(error(existence_error(url,'https://www.fbo.gov/404'),context(_G226,status(404,'Not Found'))),'W91YTZ-17-R-0029')).
+entry(download_manager,1525626667.5763612,error('No link found for solicitation SPRBL118R0032','SPRBL118R0032')).
+entry(download_manager,1525626705.0541549,error('No link found for solicitation SPE7M318T2542','SPE7M318T2542')).
+entry(download_manager,1525627358.2227223,error('No link found for solicitation 5FL0489','5FL0489')).
+entry(download_manager,1525627920.5036216,error('No link found for solicitation SPE4A517TDV62','SPE4A517TDV62')).
+entry(download_manager,1525627934.2828593,error('No link found for solicitation 18-01731NSN_6115-01-052-5413HY\\t','18-01731NSN_6115-01-052-5413HY\\t')).
+entry(download_manager,1525629766.5582283,error('No link found for solicitation SPRPA116RV481','SPRPA116RV481')).
+entry(download_manager,1525630032.5605803,error('No link found for solicitation N00019-18-RFPREQ-PMA-275-0243','N00019-18-RFPREQ-PMA-275-0243')).
+entry(download_manager,1525631719.8155859,error('No link found for solicitation 5NE0079','5NE0079')).
+entry(download_manager,1525632210.5917122,error('No link found for solicitation W911PT-18-Q-0034','W911PT-18-Q-0034')).
+entry(download_manager,1525632720.1783586,error('No link found for solicitation 2235-070616','2235-070616')).
+entry(download_manager,1525632947.4162402,error('No link found for solicitation SPE7M917T7796','SPE7M917T7796')).
+entry(download_manager,1525633366.8019247,error('No link found for solicitation SPRRA218Q0004','SPRRA218Q0004')).
+entry(download_manager,1525646453.354245,error('No link found for solicitation 18-01296NSN_2840-01-199-1585PR\\t\\t','18-01296NSN_2840-01-199-1585PR\\t\\t')).
+entry(download_manager,1525647192.4723222,error('No link found for solicitation SPRBL118Q0013','SPRBL118Q0013')).
+entry(download_manager,1525647595.4844053,error('No link found for solicitation SPE4A617TFH55','SPE4A617TFH55')).
+entry(download_manager,1525649930.0184062,error('No link found for solicitation SPRRA117Q0025','SPRRA117Q0025')).
+entry(download_manager,1525651293.181126,error('No link found for solicitation SPRBL118Q0014','SPRBL118Q0014')).
+entry(download_manager,1525652358.0036824,error('No link found for solicitation 18-01733NSN_6115-01-241-5253HY\\t','18-01733NSN_6115-01-241-5253HY\\t')).
+entry(download_manager,1525655570.8487637,error('No link found for solicitation SPRBL118R0033','SPRBL118R0033')).
+entry(download_manager,1525658774.040427,error('No link found for solicitation GS-05P-LMI19510','GS-05P-LMI19510')).
+entry(download_manager,1525661184.006112,error('No link found for solicitation 2VA0560-B','2VA0560-B')).
+entry(download_manager,1525663293.4345543,error('No link found for solicitation SPE7M918T0488','SPE7M918T0488')).
+entry(download_manager,1525663412.7040868,error('No link found for solicitation SPRBL118Q0012','SPRBL118Q0012')).
+entry(download_manager,1525666609.2478135,error('No link found for solicitation W58RGZ16R0159','W58RGZ16R0159')).
+entry(download_manager,1525669392.8658464,error('No link found for solicitation W81K00-18-P-0050','W81K00-18-P-0050')).
+entry(download_manager,1525671248.3644989,error('No link found for solicitation SPRBL118Q0011','SPRBL118Q0011')).
+entry(download_manager,1525673604.8416626,error('No link found for solicitation IFB-NCIA-MONS-18-01','IFB-NCIA-MONS-18-01')).
+entry(download_manager,1525673784.3359985,error('No link found for solicitation W5J9JE16R0069A','W5J9JE16R0069A')).
+entry(download_manager,1525673896.3703394,error('No link found for solicitation SPE4A518T5300','SPE4A518T5300')).
+entry(download_manager,1525674607.4211736,error('No link found for solicitation SPE7MC17TT914','SPE7MC17TT914')).

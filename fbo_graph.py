@@ -28,8 +28,8 @@ doc_id = None
 seq = 0
 
 # def extract_file1(filename,proj,doc_type,id):
-
-aparser = argparse.ArgumentParser(description='Load FBOFULLXML file into graph database')
+from ffparse import FFParse
+aparser = FFParse.ArgumentParser(description='Load FBOFULLXML file into graph database')
 aparser.add_argument('--xml_input',default='*xml_output',help='FBO filename')
 aparser.add_argument('-graph_output',help='Graph filename')
 
@@ -37,11 +37,9 @@ aparser.add_argument('--graph_format',default='GraphML',help='')
 
 aparser.add_argument('--output_file',help='Grahp output')
 
-import scrape as sc
+aparser.all_options()
 
-sc.all_options(aparser)
-
-args = sc.parse_args(aparser)
+args = aparser.parse_args()
 print(args)
 
 def load_graph(Filename):

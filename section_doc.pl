@@ -175,7 +175,12 @@ section_new(Doc,Sentences) :-
 			retractall(section_text(Doc,_,_,_,_)),
 			length(Sentences,TotalSent),
 			debug([section_doc,section],'analyzing ~w sentences ',[TotalSent]),
-			
+			flag(counter, _, 0),
+            ( 
+              flag(counter, Counter, Counter+1),
+              member(sentence(_,Sent), Sentences),
+              debug([section_doc,sentences],"Sentence ~w :: ~w",[Counter,Sent]),
+            fail;true),
 			once(ignore(mark_sections(Doc, [indent(0,'')], Sentences, _Out))),
             listing(section_text),
 			debug([section_doc,section],'after mark_sections ',[]),
@@ -184,8 +189,8 @@ section_new(Doc,Sentences) :-
                 log_file(Text),
 				debug([section_doc,section],'section text ~w',[sect_text(Id,Sect,Stack)]),
                 sleep(0.0),
-				visualize_topic_r(Doc, Stream, section, Sect, Leaf, [doc_id=Doc]),		% visualize section outline for knowledge graph
-				new_edge(_,Leaf,Id,section_link,[]),				% link to document node
+				visualize_topic_r(Doc, Stream, 'Section', Sect, Leaf, [doc_id=Doc]),		% visualize section outline for knowledge graph
+				new_edge(_,Leaf,Id,'SECTION_LINK',[]),				% link to document node
                 format('linking ~w -> ~w\n',[Leaf,Id]),
 			fail;true), 
 			debug([section_doc,section],'after graphing requirements ',[]),
@@ -217,21 +222,39 @@ visualize_topic_r(Parent, Prefix, Label, Topic1, Leaf, Attributes) :-
 	debug([fabric,vizr,topic],'first topic ~w',[[Leaf|Rest]]),
 	(
 		nextto(Lower, Higher, [Leaf|Rest]),
-		new_edge(_, Higher, Lower, child_topic, []),
+		new_edge(_, Higher, Lower, 'CHILD_TOPIC', []),
 	fail;true),
     format('after linking topics\n',[]),
 	last(Rest, TopNode),
     format('after last ~w\n',[x(Rest,TopNode)]),
-	new_edge(_,Parent,TopNode,section_root,[]),
+	new_edge(_,Parent,TopNode,'SECTION_ROOT',[]),
 	format('after new edge\n',[]).
+	
+child_topic(S1, S2) :-
+	length(S1,L1),
+    length(S2, L2),
+    L1 > L2,
+	new_edge(_, S2, S1, 'CHILD_TOPIC', []).		% child topics should have more characters in title
+child_topic(S1, S2) :-
+	length(S1,L1),
+    length(S2, L2),
+    not(L1 > L2),
+	new_edge(_, S1, S2, 'CHILD_TOPIC', []).
 
 visualize_topic_r1(Pre, Label, [H|T], [Sect|Ids], Attributes) :-
 	reverse([H|T], Rev),
 	atomic_list_concat(Rev, '.', Sect),
     make_title(Sect,SectTitle),
-	new_node(Sect, Label, [title=SectTitle|Attributes]),	
+	new_node(Sect, Label, [title=SectTitle|Attributes]),
+	link_sect_doc(Sect, Attributes),
 	visualize_topic_r1(Pre, Label, T, Ids, Attributes).
 visualize_topic_r1(_, _, [], [], _).
+
+link_sect_doc(Sect, Attr) :-
+    member(doc_id=Doc, Attr),
+    \+ graph:edge(_, Sect, Doc, 'BELONGS_TO', []),
+    new_edge(_, Sect, Doc, 'BELONGS_TO', []), !.
+link_sect_doc(_,_).
 	
 make_title(In, Title) :-
     atomic_list_concat([_,Title|_], '::.', In), !.
@@ -408,10 +431,10 @@ tty_mode :-
 
 analyze :-
     format('start analyze\n',[]),
-    graph:node(DocId, document_merge_, Dattr),
+    graph:node(DocId, 'DocumentRoot', Dattr),
     format('document id ~w\n',[DocId]),
     subset([],Dattr),
-    findall(Seq-node(SID,Text), (graph:node(SID, sentence, Attr), subset([seq=Seq,text=Text],Attr)), Sentences1),
+    findall(Seq-node(SID,Text), (graph:node(SID, 'Sentence', Attr), subset([seq=Seq,text=Text],Attr)), Sentences1),
     length(Sentences1, Len),
     format('found ~w sentences\n',[Len]),
     keysort(Sentences1, Sorted),
@@ -424,31 +447,34 @@ analyze :-
 concat_sections :-
 % aggregate text for each section
     (
-      graph:node(Id, section, Attr),
+      graph:node(Id, 'Section', Attr),
       findall(Seq-Text, section_text(Id, Seq, Text), Sentences),
       sort(Sentences, Sorted),
       findall(Sent, member(_-Sent, Sorted), SortedSent),
       atomic_list_concat(SortedSent, SectText),
       graph:delete_node(Id),
-      graph:new_node(Id, section, [text=SectText|Attr]),
+      graph:new_node(Id, 'Section', [text=SectText|Attr]),
+      once(graph:new_node(TextId, 'Text', [text=SectText])), % since the Id is a variable I believe it will backtrack once which we don't want to happen '
+      graph:new_edge(_, Id, TextId, 'HAS_TEXT', []),
     fail;true).
     
 section_text(SectId, Seq, Text) :-
 % find all sentence texts associated with this section id
-    graph:node(SectId, section, Attr),
-    graph:edge(_, SectId, Sub, section_link, _),
-    graph:node(Sub, sentence, SentAttr),
+    graph:node(SectId, 'Section', Attr),
+    graph:edge(_, SectId, Sub, 'SECTION_LINK', _),
+    graph:node(Sub, 'Sentence', SentAttr),
     subset([seq=Seq,text=Text1],SentAttr),
     format('text 1 ~w text2 ~w\n',[Text1,Text]),
     atom_concat(Text1, ' ', Text).              % add an extra space at the end so the sentences have a space between
 section_text(SectId, Seq, Text) :-
-    graph:node(SectId, section, Attr),
-    graph:edge(_, SectId, ChildId, child_topic, _),
+    graph:node(SectId, 'Section', Attr),
+    graph:edge(_, SectId, ChildId, 'CHILD_TOPIC', _),
     section_text(ChildId, Seq, Text).
     
     
 
 :- argparse:add_argument('--input_graph',[default='*graph_output',description='graph input filename']). 
+:- argparse:add_argument('--graph_format',[default=graphml,description='graph output format']). 
     
     
 :- debug(X).
@@ -456,7 +482,10 @@ section_text(SectId, Seq, Text) :-
 run :- 
     argparse:argparse, 
     argparse:get_argument('input_graph',File),
-    fail_error(graph:load_graphml(File)), 
+    argparse:get_argument('graph_format',OutputFormat),
+    format('format ~w\n',[OutputFormat]),
+    flag(graph_format, _, OutputFormat),
+    fail_error(graph:load_graph(File)), 
     format('loaded ~w\n',[File]), 
     analyze, 
     graph:save_graphml,

@@ -13,6 +13,7 @@ svci = sys.argv[0]+'_'+str(uuid.uuid1())+'.svci'
 tee_output = False
 retain = 0
 input_str = ""
+env_enabled = False
 
 def extract_val(st):
     st1 = st.split(":")[1].split('"')[1]
@@ -125,7 +126,9 @@ hooks = ExitHooks()
 env_file = "env.json"
 
 def load_json(fname):
+  return {}
   try:
+    print("load env ",fname)
     with open(fname, 'r') as inpf:
         str = inpf.read()
         return json.loads(str)
@@ -143,8 +146,14 @@ def set_env(key,val):
     save_json(env_file, dct)
 
 def get_env(key):
+    global env_enabled
+#    if args.e == False:
+    if True:  #disable for now
+        logging.info("environment disabled")
+        return None
     dct = load_json(env_file)
     if key in dct:
+        print("lookup env ",key, dct[key])
         return dct[key]
     else:
         return None
@@ -182,6 +191,7 @@ def get_output_data_json(results):
     logger.info(results)
     app_lst = re.findall('<app_data>(.+?)</app_data>', results, re.DOTALL)
     app_data = ",".join(app_lst)
+    print(">>>",app_data,"<<<")
     if '{' in app_data:
         app_dict = json.loads(app_data)
         g_input_dict = app_dict
@@ -326,9 +336,11 @@ def eval_argument(val):
 import argparse
 def parse_args(parser):
 # wrapper around parse_args
-    global in_dict, arguments, hooks, logger, tee_output, g_upstream_dict, g_input_dict
+    global in_dict, arguments, hooks, logger, tee_output, g_upstream_dict, g_input_dict, args
     parser.formatter_class = argparse.ArgumentDefaultsHelpFormatter
     logger = logging.getLogger('root')
+    if '-r' in sys.argv:
+        os.remove(env_file)
     args =  parser.parse_args(scrape_inputs_(parser))
     if not args.s:
         hooks.hook()
@@ -354,6 +366,7 @@ def parse_args(parser):
     for key, val in dct.items():
 #        print("key ",key,"value ",val)
         new_val = val
+        new_val = resolve_argument(key,val)
         if type(val) == str and '?' in val and stdin_mode() == 'terminal':
             ptr = val.split("?")[1]
             new_val = get_env(ptr)
@@ -383,6 +396,17 @@ def parse_args(parser):
     tee_output = args.t
     arguments = args
     return args
+
+def resolve_argument(name,val):
+    logger.info("resolving %s"%name)
+    try:
+        env_key = name.upper()
+        value = os.environ[env_key]
+        print("%s resolves to %s via environment variable"%(env_key,value))
+        return value
+    except:
+#        print("%s not present in env variable"%name)
+        return val
 
 def str_from_file(fname):
     with open(fname, 'r') as ifile:
@@ -432,16 +456,19 @@ def scrape_inputs_(parser):
     print('mode=',mode)
     logger.info("stdin mode=%s"%mode)
     write_dict({'program':sys.argv[0],'execution_time':now})
+    st = "{}"
     if not mode == 'terminal':    # if stdin data is available, scrape it
         st = sys.stdin.read()
     else:
-        try:
-          with open(env_file, 'r') as inpf:
-              st = "<app_data>"+inpf.read()+"</app_data>"
-              logger.debug("read environment data %s"%st)
-        except:
-          st = "{}"
-          logger.warn("unable to lod environment data")
+        if '-e' in sys.argv:
+            try:
+              with open(env_file, 'r') as inpf:
+                  st = "<app_data>"+inpf.read()+"</app_data>"
+                  print("read env data")
+                  logger.debug("read environment data %s"%st)
+            except:
+              st = "{}"
+              logger.warn("unable to lod environment data")
     if not st == None:
         needed_args = []
         for arg in parser._actions:
@@ -550,11 +577,19 @@ def model_options(parser):
 #    parser.add_argument('--model_output_file',default='eval:"sk_model_"+str(uuid.uuid1())+".pkl"',help='load existing model from file.')
     parser.add_argument('--action',choices=['fit','fit_predict','fit_transform','predict','transform','score','print'])
 
+def neo4j_options(parser):
+    parser.add_argument('--gdb_path',default='/db/data/',help='Graph db path')
+    parser.add_argument('--gdb_url',default='localhost:7474',help='Graph db URL')
+    parser.add_argument('--user',default='neo4j',help='Username')
+    parser.add_argument('--password',default='N7287W06',help='credentials')
+	
 # all options
 def all_options(parser):
     parser.add_argument('-id',default='not_provided',help='Associate with external id.')
     parser.add_argument('-t',help='Copy upstream data to downstream.',action="store_true")
     parser.add_argument('-s',help='Supress dict output.',action="store_true")
+    parser.add_argument('-e',default=False,help='Disable environmental variables.',action="store_false")
+    parser.add_argument('-r',help='Reset environmental variables.',action="store_true")
     parser.add_argument('-b',help='Disable read arguments from stdin.',action="store_true")
     parser.add_argument('--argf',help='Read command line arguments from a file.',default='*command_file')
     parser.add_argument('-ll',default='WARN',help='set debugging level')
@@ -565,7 +600,11 @@ def all_options(parser):
 def output_options(parser):
     parser.add_argument('--output_file',default='eval:"sk_ff_"+str(uuid.uuid1())+".libsvm"',help='file containing output')
 
-    parser.add_argument('--zero_based',default=True,type=bool)
+#    parser.add_argument('--zero_based',default=True,type=bool)
+
+    parser.add_argument("--zero_based", type=str2bool, nargs='?',
+                        const=True, default=False,
+                        help="zero based.")
 
     parser.add_argument('--comment',help='')
 
@@ -574,6 +613,14 @@ def output_options(parser):
     parser.add_argument('--multilabel',type=bool,default=False,help='')
     
 task_ids = {}
+
+def str2bool(v):
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
 
 def get_task_id(task):
     global task_ids

@@ -15,14 +15,14 @@ from sklearn.preprocessing import StandardScaler
 from matplotlib.colors import ListedColormap
 import scrape as sc
 
-import argparse
+from skparse import SKParse
 
 # general parameters
 
-parser = argparse.ArgumentParser(description='Perform SVM machine learning.')
+parser = SKParse(description='Perform SVM machine learning.')
 
-sc.model_options(parser)
-sc.all_options(parser)
+parser.model_options()
+parser.all_options()
 
 # SVC parameters
 
@@ -55,7 +55,7 @@ parser.add_argument('--decision_function_shape',choices=['ovo','ovr'],help='Whet
 parser.add_argument('--random_state',type=int,help='The seed of the pseudo random number generator to use when shuffling the data for probability estimation.')
 
 
-args = sc.parse_args(parser)
+args = parser.parse_args()
 
 if not args.gamma == 'auto':    # gamma can be auto or float
     setattr(args, "gamma", float(args.gamma))
@@ -66,7 +66,7 @@ svc = svm.SVC(C=args.C, kernel=args.kernel, degree=args.degree, gamma=args.gamma
           class_weight=args.class_weight, verbose=args.verbose, max_iter=args.max_iter, decision_function_shape=args.decision_function_shape, random_state=args.random_state)
 
    
-sc.save_model(svc, args.model_output_file)
+parser.save_model(svc, args.model_output_file)
 
 
     

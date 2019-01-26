@@ -9,8 +9,8 @@ import networkx as nx
 
 from py2neo import authenticate, Graph, Node, Relationship
 
-
-aparser = argparse.ArgumentParser(description='Process weekly FBO files')
+from ffparse import FFParse
+aparser = FFParse.ArgumentParser(description='Process weekly FBO files')
 aparser.add_argument('-graph_output',help='Graph filename')
 
 aparser.add_argument('--graph_format',default='GraphML',help='')
@@ -18,11 +18,9 @@ aparser.add_argument('--graph_format',default='GraphML',help='')
 aparser.add_argument('--output_file',help='Grahp output')
 aparser.add_argument('--ts',default='*run_id',required=True,help='Date being processed')
 
-import scrape as sc
+aparser.all_options()
 
-sc.all_options(aparser)
-
-args = sc.parse_args(aparser)
+args = aparser.parse_args()
 print(args)
 
 import dateutil.parser

@@ -15,20 +15,15 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-
-
-
-import scrape as sc
-
 h = 0.02
 
-import argparse
+from skparse import SKParse
 
 # general parameters
 
 parser = argparse.ArgumentParser(description='Perform SVM machine learning.')
 
-sc.all_options(parser)
+parsr.all_options(parser)
 
 parser.add_argument('--feature_file',default='*feature_file',help='file containing feature data')
 
@@ -46,10 +41,7 @@ parser.add_argument('--projection',choices=['3d','polar'])
 
 parser.add_argument('--feature_file2')
 
-from scrape import write_dict, write_dict_file
-from scrape import load_file
-
-args = sc.parse_args(parser)
+args = parser.parse_args()
 
 import matplotlib
 if args.plot == 'save':
@@ -95,7 +87,7 @@ if not feature_file2 == None:
 print("matrix shape ",len(X),len(X[0]))
 
 if not args.model_file == None:
-    svc = sc.load_model(args.model_file)
+    svc = parser.load_model(args.model_file)
 else:
     svc = DummyClassifier()
   
@@ -111,7 +103,7 @@ if len(X[0]) > 3:
     X = PCA().fit_transform(X)
 
 if not args.plot == 'no' and 'basic' in plots:
-    sc.write_dict({'plot_type':'basic'})
+    parser.write_dict({'plot_type':'basic'})
     plt.title("task "+args.id+" "+args.plot_title)
     ax = figure.add_subplot(111)
     if feature_file2 == None:
@@ -123,7 +115,7 @@ if not args.plot == 'no' and 'basic' in plots:
         yd = [abs(item[0]-item[1]) for item in zip(y,y2)]
         yd1 = [item for item in yd if item == 0]
         scr = float(len(yd1))/float(len(yd))
-        sc.write_dict({'score_noise':scr,'score':score1})
+        parser.write_dict({'score_noise':scr,'score':score1})
         ax.text(0.95, 0.1, ('score %.2f' % (score1)).lstrip('0'),
                     size=15, horizontalalignment='right', transform=ax.transAxes)
     ax.scatter(X[:, 0], X[:, 1], marker='o', c=yd)
@@ -164,7 +156,7 @@ if not args.plot == 'no' and 'input' in plots:
         score = clf.score(X_test, y_test)
     else:
         score = 1.0
-    sc.write_dict({'score':score})
+    parser.write_dict({'score':score})
     ax.set_xlim(xx.min(), xx.max())
     ax.set_ylim(yy.min(), yy.max())
     ax.set_xticks(())

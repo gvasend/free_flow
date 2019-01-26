@@ -43,7 +43,7 @@ def send_mail(send_from, send_to, subject, text, files=None):
         msg['To'] = COMMASPACE.join(send_to)
         msg.preamble = subject
 
-        msg.attach(MIMEText(text))
+        msg.attach(MIMEText(text,'html'))
 
         # Assume we know that the image files are all in PNG format
         print("files to upload:",files)

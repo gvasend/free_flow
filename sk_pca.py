@@ -10,9 +10,9 @@ import logging
 from sklearn import manifold, datasets
 
 
-import argparse
+from skparse import SKParse
 
-parser = argparse.ArgumentParser(description='Perform PCA analysis on feature data.')
+parser = SKParse(description='Perform PCA analysis on feature data.')
 
 parser.add_argument('--n_components',type=int,default=2,help='number of components to use in PCA analysis')
 
@@ -29,15 +29,11 @@ parser.add_argument('--iterated_power',default='auto',help='')
 
 parser.add_argument('--random_state',help='A pseudo random number generator used for the initialization of the residuals when eigen_solver == ‘arpack’.')
 
-import scrape as sc
+parser.model_options()
+parser.all_options()
+parser.output_options()
 
-sc.model_options(parser)
-sc.all_options(parser)
-sc.output_options(parser)
-
-from scrape import write_dict
-
-args = sc.parse_args(parser)
+args = parser.parse_args()
 
 
 
@@ -49,7 +45,7 @@ from sklearn.decomposition import PCA
 pca = PCA(n_components=2, whiten=args.whiten, copy=args.copy, svd_solver=args.svd_solver, tol=args.tol, iterated_power=args.iterated_power, random_state=args.random_state)
 
    
-sc.save_model(pca, args.model_output_file)
+parser.save_model(pca, args.model_output_file)
 
 
 

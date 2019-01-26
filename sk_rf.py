@@ -16,14 +16,14 @@ from sklearn.preprocessing import StandardScaler
 from matplotlib.colors import ListedColormap
 import scrape as sc
 
-import argparse
+from skparse import SKParse
 
 # general parameters
 
-parser = argparse.ArgumentParser(description='Create Random Forest Classifier.')
+parser = SKParse(description='Create Random Forest Classifier.')
 
-sc.model_options(parser)
-sc.all_options(parser)
+parser.model_options()
+parser.all_options()
 
 # RF parameters
 
@@ -55,13 +55,11 @@ parser.add_argument('--class_weight',help='list of dicts, balanced, balanced_sub
         'every tree grown. For multi-output, the weights of each column of y will be multiplied. Note that these weights will be multiplied with sample_weight (passed through the fit method) if sample_weight is specified.')
 
 
-args = sc.parse_args(parser)
+args = parser.parse_args()
 
 rf = RandomForestClassifier(n_estimators=args.n_estimators, criterion=args.criterion, max_depth=args.max_depth, min_samples_split=args.min_samples_split, min_samples_leaf=args.min_samples_leaf, min_weight_fraction_leaf=args.min_weight_fraction_leaf, max_features=args.max_features, max_leaf_nodes=args.max_leaf_nodes, min_impurity_split=args.min_impurity_split, bootstrap=args.bootstrap, oob_score=args.oob_score, n_jobs=args.n_jobs, random_state=args.random_state, verbose=args.verbose, warm_start=args.warm_start, class_weight=args.class_weight)
    
-sc.save_model(rf, args.model_output_file)
-
-
+parser.save_model(rf, args.model_output_file)
     
     
 

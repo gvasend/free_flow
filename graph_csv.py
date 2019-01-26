@@ -1,6 +1,5 @@
 
 #!/usr/bin/env python
-import argparse
 import uuid
 import time
 import threading
@@ -28,8 +27,9 @@ doc_id = None
 seq = 0
 
 # def extract_file1(filename,proj,doc_type,id):
+from ffparse import FFParse
 
-aparser = argparse.ArgumentParser(description='Graph a csv formatted file')
+aparser = FFParse.ArgumentParser(description='Graph a csv formatted file')
 aparser.add_argument('--input_csv',default='*graph_output',help='FBO filename')
 
 aparser.add_argument('-graph_format',default='GraphML',help='')
@@ -39,11 +39,9 @@ aparser.add_argument('--deferred_link',default=False,type=bool)
 aparser.add_argument('--node_creation',default='create',help='create node using create or merge')
 aparser.add_argument('--label',help='label to assign to created vertices')
 
-import scrape as sc
+aparser.all_options()
 
-sc.all_options(aparser)
-
-args = sc.parse_args(aparser)
+args = aparser.parse_args()
 print(args)
 
 
@@ -151,5 +149,5 @@ if __name__ == '__main__':
     elif args.graph_format == 'GraphML':
         print("writing graphml")
         nx.write_graphml(graph, args.output_file)
-    sc.write_dict({'graph_output':args.output_file})
+    aparser.write_dict({'graph_output':args.output_file})
 

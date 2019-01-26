@@ -13,18 +13,17 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from matplotlib.colors import ListedColormap
-import scrape as sc
 
 h = 0.02
 
-import argparse
+from  skparse import SKParse
 
 # general parameters
 
-parser = argparse.ArgumentParser(description='Perform SVM machine learning.')
+parser = SKParse(description='Perform SVM machine learning.')
 
-sc.all_options(parser)
-sc.model_options(parser)
+parser.all_options()
+parser.model_options()
 
 parser.add_argument('--feature_file',required=True,help='file containing feature data')
 
@@ -62,12 +61,7 @@ parser.add_argument('--decision_function_shape',choices=['ovo','ovr'],help='Whet
 
 parser.add_argument('--random_state',type=int,help='The seed of the pseudo random number generator to use when shuffling the data for probability estimation.')
 
-
-
-from scrape import write_dict
-from scrape import load_file
-
-args = sc.parse_args(parser)
+args = parser.parse_args()
 
 
 
@@ -79,7 +73,7 @@ def write_dict(data):
     for key in data:
         print('{"%s":"%s"}'%(key,data[key]))
 
-write_dict({'pca_file':'pca_plot.png'})
+parser.write_dict({'pca_file':'pca_plot.png'})
 
 
 import datetime
@@ -95,7 +89,7 @@ elif '.libsvm' in feature_file:
     X = X.toarray()
 #    y = y.toarray()
 
-svc = sc.load_model(args.model_file)
+svc = parser.load_model(args.model_file)
 
 if svc == None:
     svc = svm.SVC(C=args.C, kernel=args.kernel, degree=args.degree, gamma=args.gamma, coef0=args.coef0, shrinking=args.shrinking, probability=args.probability, tol=args.tol, cache_size=args.cache_size, 
@@ -183,7 +177,7 @@ if args.plot == 'save':
 elif args.plot == 'show':
     plt.show()
     
-sc.save_model(svc, args.model_output_file)
+parser.save_model(svc, args.model_output_file)
 
 
     

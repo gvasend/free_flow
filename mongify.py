@@ -1,7 +1,6 @@
 #!/usr/bin/python 
 print("extractor.py")
 
-import argparse
 import uuid
 import time
 import threading
@@ -32,8 +31,9 @@ fo = None
 seq = 0
 
 # def extract_file1(filename,proj,doc_type,id):
+from ffparse import FFParse
 
-aparser = argparse.ArgumentParser(description='Convert text properties to mongo strings')
+aparser = FFParse(description='Convert text properties to mongo strings')
 
 aparser.add_argument('--node_label',required=True,help='Label to convert')
 aparser.add_argument('--property',required=True,help='property to convert')
@@ -46,11 +46,9 @@ aparser.add_argument('--gdb_url',default='localhost:7474',help='Graph db URL')
 aparser.add_argument('--user',default='neo4j',help='Username')
 aparser.add_argument('--password',default='N7287W06',help='credentials')
 
-import scrape as sc
+aparser.all_options()
 
-sc.all_options(aparser)
-
-args = sc.parse_args(aparser)
+args = aparser.parse_args()
 
 def uid():
     return str(uuid.uuid1())

@@ -10,9 +10,9 @@ import logging
 from sklearn import manifold, datasets
 
 
-import argparse
+from skparse import SKParse
 
-parser = argparse.ArgumentParser(description='Perform Isomap analysis on feature data.')
+parser = SKParse(description='Perform Isomap analysis on feature data.')
 
 parser.add_argument('--n_neighbors',default=5,type=int,help='number of neighbors to consider for each point.')
 
@@ -30,15 +30,11 @@ parser.add_argument('--neighbors_algorithm',default='auto',choices=['auto','brut
 
 parser.add_argument('--n_jobs',type=int,default=1,help='The number of parallel jobs to run. If -1, then the number of jobs is set to the number of CPU cores.')
 
-import scrape as sc
+parser.model_options()
+parser.all_options()
+parser.output_options()
 
-sc.model_options(parser)
-sc.all_options(parser)
-sc.output_options(parser)
-
-from scrape import write_dict
-
-args = sc.parse_args(parser)
+args = parser.parse_args()
 
 from sklearn.manifold import Isomap
 
@@ -46,7 +42,7 @@ model = Isomap(n_neighbors=args.n_neighbors, n_components=args.n_components, eig
 
 # model = Isomap(n_neighbors=args.n_neighbors, n_components=args.n_components)
    
-sc.save_model(model, args.model_output_file)
+parser.save_model(model, args.model_output_file)
 
 
 

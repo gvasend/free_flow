@@ -107,7 +107,7 @@ user:new_node(Id, Label, Attr) :-
         nonvar(Id),
         \+ node(Id,_,_),
 %        format('new node ~w\n',[node(Id, Label, Attr)]),
-        assert(node(Id, Label, Attr))
+        assert(node(Id, Label, Attr)), !
     ;
         var(Id),
         gen_id(Id),
@@ -129,7 +129,7 @@ gen_id(Id) :- ground(Id).
     
 attr_type(X,string) :-
     atom(X), !.
-attr_type(X,integer) :-
+attr_type(X,string) :-
     integer(X), !.
 attr_type(X,float) :-
     float(X), !.
@@ -192,11 +192,6 @@ user:graphml_key(XML, Key, Type, For, Id) :-
    format('generate new key ~w\n',[key(Key,Type,For,Id)]),
    assert(key(Key, Type, For, Id)), !.
 
-   
-xml_key(XML, Key, Type, For, Id) :-
-    nonvar(XML),
-    xpath:xpath(XML, //key(@'attr.name'=Key,@id=Id,@'attr.type'=Type,@for=For), _).
-
   
 key_node(element(key, ['attr.name'=Key, 'attr.type'=Type, for=For, id=Id],[])) :-
     key(Key, Type, For, Id),
@@ -207,14 +202,16 @@ edge_node(XML, Node) :-
     graphml_key(XML, label, string, edge, LabelId),
     LabelNode = element(data,[key=LabelId],[Label]),
     findall(element(data,[key=AId],[AttrVal]), (member(Akey=AttrVal, EAttr), key(Akey, Type, edge, AId)), AllData),
-    Node = element(edge,[source=From,target=To],[LabelNode|AllData]).
+    Node = element(edge,[directed=true,source=From,target=To,label=Label],[LabelNode|AllData]).
+%    Node = element(edge,[directed=true,source=From,target=To],[LabelNode|AllData]).
 
 node_node(XML, Node) :-
     node(Nid, Nlabel, NAttr),
     graphml_key(XML, label, string, node, LabelId),
     LabelNode = element(data,[key=LabelId],[Nlabel]),
     findall(element(data,[key=AId],[AttrVal]), (member(Akey=AttrVal, NAttr), key(Akey, Type, node, AId)), AllData),
-    Node = element(node,[id=Nid],[LabelNode|AllData]).
+    atom_concat(':',Nlabel,Neo4jLabel),
+    Node = element(node,[id=Nid,labels=Neo4jLabel],[LabelNode|AllData]).
 %    format('generating new node ~w\n',[Node]).
     
 merge_write :-
@@ -222,10 +219,25 @@ merge_write :-
     merge_write(File,element(graphml,[],[element(graph,[],[])])).
 
 merge_write_auto :-
-    get_filename(prefix, xml, File),
-    merge_write(File,element(graphml,[],[element(graph,[],[])])).
+    (
+        flag(graph_format, graphml, graphml), 
+        get_filename(prefix, xml, File),
+        merge_write(File,element(graphml,[],[element(graph,[],[])]))
+    ;
+        flag(graph_format, prolog, prolog), 
+        get_filename(prefix, pl, File),
+        write_prolog(File)
+    ).
 
-
+write_prolog(File) :-
+    tell(File),
+    listing(node),
+    listing(edge),
+    listing(key),
+    listing(graph_xml),
+    told,
+    format('<app_data>\n{"graph_output":"~w"}\n</app_data>\n',[File]).
+    
 merge_write(File, element(graphml,Attr,Sub)) :-
     add_keys,
     select(element(graph,Gattr,Gsub), Sub, Remain),
@@ -234,7 +246,7 @@ merge_write(File, element(graphml,Attr,Sub)) :-
     findall(Node, edge_node(element(graphml,Attr,Sub),Node), Edges),
     flatten([Gsub,Nodes,Edges],Gsub2),
 
-    flatten([Remain,KeyNodes,element(graph,[edgedefault=undirected],Gsub2)], Sub2),
+    flatten([Remain,KeyNodes,element(graph,[edgedefault=directed],Gsub2)], Sub2),
     format('<app_data>\n{"graph_output":"~w"}\n</app_data>\n',[File]),
     open(File, write, Str, []),
 	xml_write(Str, [element(graphml,[xmlns="http://graphml.graphdrawing.org/xmlns", xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance", xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"],Sub2)], [header(false)]),
@@ -254,8 +266,14 @@ formatted_node(Map,element(node,[id=Nid],Sub)) :-
 
 get_key(Map, Name, Key) :-
     member(map(Name,Key),Map).
-    
 
+load_graph(File) :-
+    atom_concat(_, '.pl', File),
+    consult(File).
+load_graph(File) :-
+    atom_concat(_, '.xml', File),
+    load_graphml(File).
+    
 load_graphml(File) :-
     format('before loading ~w\n',[File]), 
     load_xml_file(File, [XML]), 
@@ -291,7 +309,11 @@ save_graphml :-
 save_graphml(File) :-
     graph_xml(_,XML).
 
+:- flag(graph_format, _, graphml).
     
+xml_key(XML, Key, Type, For, Id) :-
+    nonvar(XML),
+    xpath:xpath(XML, //key(@'attr.name'=Key,@id=Id,@'attr.type'=Type,@for=For), _).    
     
 %%%%%%%%%%%%%%%%
 

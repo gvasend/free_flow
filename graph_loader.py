@@ -1,6 +1,5 @@
 
 #!/usr/bin/env python
-import argparse
 import uuid
 import time
 import threading
@@ -28,13 +27,15 @@ seq = 0
 
 # def extract_file1(filename,proj,doc_type,id):
 
+from ffparse import FFParse
 
-aparser = argparse.ArgumentParser(description='Load graph')
+aparser = FFParse(description='Load graph')
 aparser.add_argument('-graph_output',help='Graph filename') # single dash disables automatic setting of parameter from upstream data 
 
 aparser.add_argument('--input_graph',default='*graph_output',help='Graph filename')
 aparser.add_argument('--delete_all',default='False',help='Delete graph db (True/False)')
 aparser.add_argument('--gdb_url',default='localhost:7474',help='Graph db URL')
+aparser.add_argument('--gdb_path',default='/db/data/',help='Graph db path')
 aparser.add_argument('--plot_graph',default='False',help='Plot graph (True/False')
 
 
@@ -59,26 +60,26 @@ def test_py2neo():
     graph.create(Relationship(pepsi, "MAKES", mtdew))
 
 
+aparser.all_options()
 
-import scrape as sc
-
-sc.all_options(aparser)
-
-args = sc.parse_args(aparser)
+args = aparser.parse_args()
 print(args)
 
 def load_graph(Filename):
     return nx.read_graphml(Filename)
 
-gr = load_graph(args.input_graph)
-
 def clean_label(label):
     return label.replace("_merge_","").replace("_create_","")
 
-def networkx_2_neo4j():
+def connect_neo():
     authenticate(args.gdb_url, 'neo4j', 'N7287W06')
-    graph = Graph('%s/db/data/'%args.gdb_url)
+    return Graph('http://%s/db/data/'%args.gdb_url)
 
+def networkx_2_neo4j():
+    global gr
+    graph = connect_neo()
+    print('connected to neo4j')
+    gr = load_graph(args.input_graph)
     if args.delete_all == 'True':
         graph.delete_all()
     node_dct = {}

@@ -21,9 +21,9 @@ from sklearn import datasets
 
 
 
-import argparse
+from skparse import SKParse
 
-parser = argparse.ArgumentParser(description='Perform Kernel PCA analysis.')
+parser = SKParse(description='Perform Kernel PCA analysis.')
 
 parser.add_argument('--n_components',type=int,default=2,help='number of components to use in PCA analysis')
 
@@ -58,14 +58,11 @@ parser.add_argument('--plot',default='no',choices=['no','save','show'],help='plo
 
 parser.add_argument('--plot_title',default='PCA Transform',help='Title for the plot')
 
-import scrape as sc
-sc.model_options(parser)
-sc.all_options(parser)
-sc.output_options(parser)
+parser.model_options()
+parser.all_options()
+parser.output_options()
 
-from scrape import write_dict
-
-args = sc.parse_args(parser)
+args = parser.parse_args(parser)
 
 
 
@@ -78,7 +75,7 @@ kpca = KernelPCA(kernel=args.kernel, fit_inverse_transform=args.fit_inverse_tran
                  tol=args.tol,max_iter=args.max_iter, random_state=args.random_state, n_jobs=args.n_jobs, copy_X=args.copy_X)
 
    
-sc.save_model(kpca, args.model_output_file)
+parser.save_model(kpca, args.model_output_file)
 
 
 

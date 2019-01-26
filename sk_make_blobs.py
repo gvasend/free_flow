@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: ascii -*-
-import numpy as np
+
 import csv
 import sys
 from sklearn.datasets import make_blobs
@@ -8,10 +8,10 @@ from sklearn.datasets import make_blobs
 from sklearn import manifold, datasets
 
 
-import argparse
+from skparse import SKParse
+import ff_util as util
 
-
-parser = argparse.ArgumentParser(description='Generate isotropic Gaussian blobs for clustering.')
+parser = SKParse(description='Generate isotropic Gaussian blobs for clustering.')
 
 
 parser.add_argument('--centers',default='3',help=' or array of shape [n_centers, n_features], optional (default=3) The number of centers to generate, or the fixed center locations.')
@@ -28,17 +28,10 @@ parser.add_argument('--shuffle',type=bool,default=True,help='Shuffle the samples
 
 parser.add_argument('--random_state',type=int,help=' RandomState instance or None, optional (default=None) If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by np.random.')
 
-import scrape as sc
+parser.output_options()
+parser.all_options()
 
-sc.output_options(parser)
-sc.all_options(parser)
-
-
-from scrape import write_dict
-from scrape import load_file
-
-
-args = sc.parse_args(parser)
+args = parser.parse_args()
 
 
 #results = np.loadtxt(open("test_1_centroids.csv","rb"),delimiter=",",skiprows=1)
@@ -50,10 +43,10 @@ args = sc.parse_args(parser)
 # mode { baseline, update }
 
 
-np.random.seed(0)
+#np.random.seed(0)
 
-X, y = make_blobs(n_samples=args.n_samples, n_features=args.n_features, centers=sc.safe_eval(args.centers), cluster_std=sc.safe_eval(args.cluster_std), center_box=sc.safe_eval(args.center_box), shuffle=args.shuffle, random_state=args.random_state)
+X, y = make_blobs(n_samples=args.n_samples, n_features=args.n_features, centers=util.safe_eval(args.centers), cluster_std=util.safe_eval(args.cluster_std), center_box=util.safe_eval(args.center_box), shuffle=args.shuffle, random_state=args.random_state)
 
 datasets.dump_svmlight_file(X,y,args.output_file,zero_based=args.zero_based,query_id=args.query_id,multilabel=args.multilabel,comment=args.comment)
 
-write_dict({'feature_file':args.output_file})
+parser.write_dict({'feature_file':args.output_file})

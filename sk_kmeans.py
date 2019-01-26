@@ -9,9 +9,9 @@ import sys
 from sklearn import manifold, datasets
 
 
-import argparse
+from skparse import SKParse
 
-parser = argparse.ArgumentParser(description='Perform Kmeans analysis on feature data.')
+parser = SKParse(description='Perform Kmeans analysis on feature data.')
 
 parser.add_argument('--n_clusters',type=int,default=8, help='The number of clusters to form as well as the number of centroids to generate.')
 
@@ -35,15 +35,10 @@ parser.add_argument('--verbose',type=int,default=0,help='Verbosity mode.')
 
 parser.add_argument('--copy_x',type=bool,default=True,help='When pre-computing distances it is more numerically accurate to center the data first. If copy_x is True, then the original data is not modified. If False, the original data is modified, and put back before the function returns, but small numerical differences may be introduced by subtracting and then adding the data mean.')
 
+parser.all_options()
+parser.model_options()
 
-import scrape as sc
-from scrape import write_dict
-from scrape import load_file
-
-sc.all_options(parser)
-sc.model_options(parser)
-
-args = sc.parse_args(parser)
+args = parser.parse_args()
 
 
    
@@ -51,7 +46,7 @@ kmeans = KMeans(n_clusters=args.n_clusters, init=args.init, n_init=args.n_init, 
             copy_x=args.copy_x, n_jobs=args.n_jobs, algorithm=args.algorithm)
 
  
-sc.save_model(kmeans, args.model_output_file)
+parser.save_model(kmeans, args.model_output_file)
 
 
 

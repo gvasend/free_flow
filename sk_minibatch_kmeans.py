@@ -8,9 +8,9 @@ import sys
 from sklearn import manifold, datasets
 
 
-import argparse
+from skparse import SKParse
 
-parser = argparse.ArgumentParser(description='Perform Kmeans analysis on feature data.')
+parser = SKParse(description='Perform Kmeans analysis on feature data.')
 
 parser.add_argument('--n_clusters',type=int,default=8, help='The number of clusters to form as well as the number of centroids to generate.')
 
@@ -44,15 +44,10 @@ parser.add_argument('--max_no_improvement',type=int,default=10,help='Control ear
 
 parser.add_argument('--init_size',type=int,help='Number of samples to randomly sample for speeding up the initialization (sometimes at the expense of accuracy): the only algorithm is initialized by running a batch KMeans on a random subset of the data. This needs to be larger than n_clusters.')
 
+parser.all_options()
+parser.model_options()
 
-import scrape as sc
-from scrape import write_dict
-from scrape import load_file
-
-sc.all_options(parser)
-sc.model_options(parser)
-
-args = sc.parse_args(parser)
+args = parser.parse_args()
 
 if args.init_size == None:
     init_size = args.batch_size*3
@@ -63,7 +58,7 @@ else:
 kmeans = MiniBatchKMeans(n_clusters=args.n_clusters, init=args.init, max_iter=args.max_iter, batch_size=args.batch_size, verbose=args.verbose, compute_labels=args.compute_labels, random_state=args.random_state, tol=args.tol, max_no_improvement=args.max_no_improvement, init_size=init_size, n_init=args.n_init, reassignment_ratio=args.reassignment_ratio)
    
  
-sc.save_model(kmeans, args.model_output_file)
+parser.save_model(kmeans, args.model_output_file)
 
 
 

@@ -113,7 +113,7 @@ graph_text(Args) :-
 		flag(seq,Seq,Seq+1),
 		debug([graph_doc,graph_text],'seq ~w sentence ~w ',[Seq,Line]),
 		sha_hash(Line, Hash, []), hash_atom(Hash,Sha1),
-		graph:new_node(Sent,sentence,[seq=Seq,text=Line,doc_id=Doc,req_type=unknown,category=sentence,sha1=Sha1]),
+		graph:new_node(Sent,'Sentence',[seq=Seq,text=Line,doc_id=Doc,req_type=unknown,category=sentence,sha1=Sha1]),
 		graph:new_edge(Edge,Doc,Sent,has_sentence,[]),
 	fail;true),
 	flag(seq,Total,Total).
@@ -156,10 +156,10 @@ normalize_text1([],[]) :-
 	
 analyze :-
     format('start analyze\n',[]),
-    graph:node(Id, document_merge_, Attr),
+    graph:node(Id, 'DocumentRoot', Attr),
     format('doc a6ttr ~w\n',[Attr]),
     graph_text([id=Id|Attr]),
-    graph:delete_node_property(Id,document_merge_,text).        % text gets too big, slows db down etc. so delete.
+    graph:delete_node_property(Id,'DocumentRoot',text).        % text gets too big, slows db down etc. so delete.
 
 
 handle_arguments(Args) :-
@@ -191,13 +191,16 @@ fail_error(G) :-
 
 
 :- argparse:add_argument('--input_graph',[default='*graph_output',description='graph input filename']). 
-
+:- argparse:add_argument('--graph_format',[default=graphml,description='graph output format']).
 
 run :- 
     format('hello world\n',[]),
     argparse:argparse, 
     argparse:get_argument('input_graph',File),
     argparse:show_arguments,
+    argparse:get_argument('graph_format',OutputFormat),
+    format('format ~w\n',[OutputFormat]),
+    flag(graph_format, _, OutputFormat),
     fail_error(graph:load_graphml(File)), 
     format('loaded ~w\n',[File]), 
     analyze, 

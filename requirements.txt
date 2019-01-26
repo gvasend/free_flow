@@ -1,3 +1,5 @@
+hdbscan
+matplotlib
 docker-py
 docker-pycreds
 docutils
@@ -16,3 +18,5 @@ xmltodict
 tika
 nltk
 networkx
+py2neo
+

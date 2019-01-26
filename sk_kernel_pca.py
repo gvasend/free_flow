@@ -21,9 +21,9 @@ from sklearn import datasets
 
 
 
-import argparse
+from skparse import SKParse
 
-parser = argparse.ArgumentParser(description='Perform Kernel PCA analysis.')
+parser = SKParse(description='Perform Kernel PCA analysis.')
 
 parser.add_argument('--n_components',type=int,default=2,help='number of components to use in PCA analysis')
 
@@ -59,14 +59,9 @@ parser.add_argument('--plot',default='no',choices=['no','save','show'],help='plo
 
 parser.add_argument('--plot_title',default='PCA Transform',help='Title for the plot')
 
+parser.all_options()
 
-import scrape as sc
-from scrape import write_dict
-from scrape import load_file
-
-sc.all_options(parser)
-
-args = sc.parse_args(parser)
+args = parser.parse_args()
 
 
 n_components = 2
@@ -151,6 +146,6 @@ elif args.plot == 'show':
     plt.show()
 # plt.show()
 
-write_dict({'pca_file':'kpca_plot.png'})
+parser.write_dict({'pca_file':'kpca_plot.png'})
 
 

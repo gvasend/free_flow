@@ -13,17 +13,16 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from matplotlib.colors import ListedColormap
-import scrape as sc
 from sklearn.naive_bayes import BernoulliNB
 
-import argparse
+from skparse import SKParse
 
 # general parameters
 
-parser = argparse.ArgumentParser(description='Perform SVM machine learning.')
+parser = SKParse(description='Perform SVM machine learning.')
 
-sc.model_options(parser)
-sc.all_options(parser)
+parser.model_options()
+parser.all_options()
 
 # SVC parameters
 
@@ -56,7 +55,7 @@ parser.add_argument('--decision_function_shape',choices=['ovo','ovr'],help='Whet
 parser.add_argument('--random_state',type=int,help='The seed of the pseudo random number generator to use when shuffling the data for probability estimation.')
 
 
-args = sc.parse_args(parser)
+args = parser.parse_args()
 
 if not args.gamma == 'auto':    # gamma can be auto or float
     setattr(args, "gamma", float(args.gamma))
@@ -66,7 +65,7 @@ if not args.gamma == 'auto':    # gamma can be auto or float
 svc = BernoulliNB()
 
    
-sc.save_model(svc, args.model_output_file)
+parser.save_model(svc, args.model_output_file)
 
 
     

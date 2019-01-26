@@ -19,14 +19,14 @@ from sklearn.decomposition import PCA
 
 h = 0.02
 
-import argparse
+from skparse import SKParse
 
 # general parameters
 
-parser = argparse.ArgumentParser(description='Perform a function using an classifier pickle.')
+parser = SKParse(description='Perform a function using an classifier pickle.')
 
-sc.model_options(parser)
-sc.all_options(parser)
+parser.model_options()
+parser.all_options()
 
 parser.add_argument('--pca')
 parser.add_argument('--feature_file',default='*output_file',help='file containing feature data')
@@ -37,12 +37,9 @@ parser.add_argument('--plot_title',default='Model Plot',help='Title for the plot
 
 # SVC parameters
 
-sc.output_options(parser)
+parser.output_options()
 
-from scrape import write_dict
-from scrape import load_file
-
-args = sc.parse_args(parser)
+args = parser.parse_args()
 print(args)
 from numpy import genfromtxt
 
@@ -69,9 +66,9 @@ if len(X) > 0:
     pca = PCA()
     pca.fit(X)
 # print("matrix shape ",len(X),len(X[0]))
-    sc.write_dict({'rows':len(X),'features':len(X[0])})
+    parser.write_dict({'rows':len(X),'features':len(X[0])})
 
-svc = sc.load_model(args.model_file)
+svc = parser.load_model(args.model_file)
 
 logging.info("action %s"%args.action)
 labels_created = False
@@ -101,7 +98,7 @@ elif args.action == 'print':
     pprint(dct)
 dct = pprint(svc.__dict__)
 
-write_dict(svc.__dict__)
+parser.write_dict(svc.__dict__)
 
     
 #figure = plt.figure(figsize=(27, 9))
@@ -202,21 +199,21 @@ fname = 'model_plot.png'
 
 if args.plot == 'save':
     plt.savefig(fname)
-    write_dict({'plot_file':fname})
+    parser.write_dict({'plot_file':fname})
 elif args.plot == 'show':
     plt.savefig(fname)
-    write_dict({'plot_file':fname})
+    parser.write_dict({'plot_file':fname})
     plt.show()
 
 if model_change == True:    
-    sc.save_model(svc, args.model_output_file)
+    parser.save_model(svc, args.model_output_file)
 
 if data_changed == True or labels_created == True:
     if args.output_file == None:
         setattr(args, 'output_file', "sk_ff_"+str(uuid.uuid1()))+'.libsvm'
     datasets.dump_svmlight_file(X,y,args.output_file,zero_based=args.zero_based,query_id=args.query_id,multilabel=args.multilabel,comment=args.comment)
-    sc.write_dict({'feature_file':args.output_file})
-    sc.write_dict({'out_rows':len(X),'out_features':len(X[0])})
+    parser.write_dict({'feature_file':args.output_file})
+    parser.write_dict({'out_rows':len(X),'out_features':len(X[0])})
     
     
 
