@@ -110,6 +110,9 @@ def connect_service(ip, port):
 # Recieve Neo4j triggers via Mongo to initiate DAGs
 
 def trigger_dag_node(tr):
+    if 'trigger_props' in tr:
+        tr.update(tr['trigger_props'])
+        del tr['trigger_props']
     if 'createdAt' in tr:
         del tr['createdAt']
     trigger_node = tr['node_id']
